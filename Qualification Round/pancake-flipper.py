@@ -1,5 +1,5 @@
 # Time:  O(K * S)
-# Space: O(1)
+# Space: O(S)
 
 def flip(stack, i, j):
     for k in xrange(i, j):

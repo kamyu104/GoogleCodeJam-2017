@@ -1,5 +1,5 @@
 # Time:  O(N^2)
-# Space: O(R)
+# Space: O(N^2)
 
 from collections import Counter, defaultdict
     

@@ -7,7 +7,7 @@ Python solutions of Google Code Jam 2017.
 ## Qualification Round
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
-|A| [Oversized Pancake Flipper](https://code.google.com/codejam/contest/3264486/dashboard#s=p0)| [Python](./Qualification%20Round/pancake-flipper.py)| _O(K * S)_ | _O(1)_ | Easy | | Greedy |
+|A| [Oversized Pancake Flipper](https://code.google.com/codejam/contest/3264486/dashboard#s=p0)| [Python](./Qualification%20Round/pancake-flipper.py)| _O(K * S)_ | _O(S)_ | Easy | | Greedy |
 |B| [Tidy Numbers](https://code.google.com/codejam/contest/3264486/dashboard#s=p1)| [Python](./Qualification%20Round/tidy-numbers.py)| _O((logN)^2)_ | _O(logN)_ | Easy | | Math Analysis |
 |C| [Bathroom Stalls](https://code.google.com/codejam/contest/3264486/dashboard#s=p2)| [Python](./Qualification%20Round/bathroom-stalls.py)| _O(logK)_ | _O(1)_ | Easy | | Bisection |
-|D| [Fashion Show](https://code.google.com/codejam/contest/3264486/dashboard#s=p3)| [Python](./Qualification%20Round/fashion-show.py)| _O(N^2)_ | _O(R)_ | Hard | | Greedy |
+|D| [Fashion Show](https://code.google.com/codejam/contest/3264486/dashboard#s=p3)| [Python](./Qualification%20Round/fashion-show.py)| _O(N^2)_ | _O(N^2)_ | Hard | | Greedy |
