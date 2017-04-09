@@ -21,7 +21,7 @@ def fashion_show():
             diag.add(i-j)
             anti.add(i+j)
 
-    modles = []
+    models = []
     for i in xrange(1,N+1):
         for p in [(i,j) for j in xrange(i,N+1)]+[(j,i) for j in xrange(i+1,N+1)]:
             addTimes, addPlus = False, False
@@ -34,16 +34,16 @@ def fashion_show():
                 diag.add(p[0]-p[1])
                 anti.add(p[0]+p[1])
             if (addTimes and addPlus) or ((addTimes or addPlus) and p in stage):
-                modles.append(('o',p[0],p[1]))
+                models.append(('o',p[0],p[1]))
             elif addTimes:
-                modles.append(('x',p[0],p[1]))
+                models.append(('x',p[0],p[1]))
             elif addPlus:
-                modles.append(('+',p[0],p[1]))
-    return len(row)+len(diag), modles
+                models.append(('+',p[0],p[1]))
+    return len(row)+len(diag), models
    
 for case in xrange(input()):
-    points, modles = fashion_show()
-    print 'Case #%d: %d %d' % (case+1, points, len(modles))
-    for style, i, j in modles:
+    points, models = fashion_show()
+    print 'Case #%d: %d %d' % (case+1, points, len(models))
+    for style, i, j in models:
         print style, i, j
     
