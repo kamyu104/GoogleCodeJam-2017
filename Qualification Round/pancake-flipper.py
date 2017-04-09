@@ -19,7 +19,7 @@ def oversized_pancake_flipper():
         if stack[i] == '-':
             flip(stack, i, i+K)
             count += 1
-    return count if  all(pancake== '+' for pancake in stack) else "IMPOSSIBLE"
+    return count if all(pancake == '+' for pancake in stack) else "IMPOSSIBLE"
 
 for case in xrange(input()):
     print 'Case #%d: %s' % (case+1, oversized_pancake_flipper())
