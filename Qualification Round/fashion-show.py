@@ -31,8 +31,8 @@ def fashion_show():
                 col.add(p[1])
             if  (p[0]-p[1] not in diag) and (p[0]+p[1] not in anti):
                 addPlus = True
-                anti.add(p[0]+p[1])
                 diag.add(p[0]-p[1])
+                anti.add(p[0]+p[1])
             if (addTimes and addPlus) or ((addTimes or addPlus) and p in stage):
                 modles.append(('o',p[0],p[1]))
             elif addTimes:
