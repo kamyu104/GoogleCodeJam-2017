@@ -1,5 +1,11 @@
+# Copyright (c) 2017 kamyu. All rights reserved.
+#
+# Google Code Jam 2017 Qualification Round - Problem C. Bathroom Stalls
+# https://code.google.com/codejam/contest/3264486/dashboard#s=p2
+#
 # Time:  O(logK)
 # Space: O(1)
+#
 
 def max_min(n):
     return ((n+1)//2, n//2)

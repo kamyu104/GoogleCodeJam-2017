@@ -1,5 +1,11 @@
+# Copyright (c) 2017 kamyu. All rights reserved.
+#
+# Google Code Jam 2017 Qualification Round - Problem D. Fashion Show
+# https://code.google.com/codejam/contest/3264486/dashboard#s=p3
+#
 # Time:  O(N^2)
 # Space: O(N^2)
+#
 
 from collections import Counter, defaultdict
     

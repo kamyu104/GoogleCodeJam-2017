@@ -1,5 +1,11 @@
+# Copyright (c) 2017 kamyu. All rights reserved.
+#
+# Google Code Jam 2017 Qualification Round - Problem B. Tidy Numbers
+# https://code.google.com/codejam/contest/3264486/dashboard#s=p1
+#
 # Time:  O((logN)^2)
 # Space: O(logN)
+#
 
 def tidy_numbers():
     digits = map(int, list(raw_input().strip()))

@@ -1,5 +1,11 @@
+# Copyright (c) 2017 kamyu. All rights reserved.
+#
+# Google Code Jam 2017 Qualification Round - Problem A. Oversized Pancake Flipper
+# https://code.google.com/codejam/contest/3264486/dashboard#s=p0
+#
 # Time:  O(K * S)
 # Space: O(S)
+#
 
 def flip(stack, i, j):
     for k in xrange(i, j):
