@@ -41,8 +41,7 @@ def alphabet_cake():
         cake.append(list(raw_input().strip()))
         for j in xrange(C):
             if cake[i][j] != '?':
-                if cake[i][j]  not in lookup:
-                    lookup.add((i, j))
+                lookup.add((i, j))
     for p in lookup:
         paint_non_empty_row(cake, *p)
     for p in lookup:
