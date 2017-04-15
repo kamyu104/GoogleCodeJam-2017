@@ -35,16 +35,15 @@ def paint_empty_row(cake, r, c):
 
 def alphabet_cake():
     R, C = map(int, raw_input().strip().split())
-    cake = []
-    lookup = set()
+    cake, initials = [], []
     for i in xrange(R):
         cake.append(list(raw_input().strip()))
         for j in xrange(C):
             if cake[i][j] != '?':
-                lookup.add((i, j))
-    for p in lookup:
+                initials.append((i, j))
+    for p in initials:
         paint_non_empty_row(cake, *p)
-    for p in lookup:
+    for p in initials:
         paint_empty_row(cake, *p)
     return cake
 
