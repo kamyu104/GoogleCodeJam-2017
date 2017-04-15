@@ -41,10 +41,10 @@ def alphabet_cake():
         for j in xrange(C):
             if cake[i][j] != '?':
                 initials.append((i, j))
-    for p in initials:
-        paint_non_empty_row(cake, *p)
-    for p in initials:
-        paint_empty_row(cake, *p)
+    for r, c in initials:
+        paint_non_empty_row(cake, r, c)
+    for r, c in initials:
+        paint_empty_row(cake, r, c)
     return cake
 
 for case in xrange(input()):
