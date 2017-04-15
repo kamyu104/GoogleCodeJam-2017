@@ -18,7 +18,6 @@ def paint_non_empty_row(cake, r, c):
             cake[r][j] = cake[r][j-1]
         else:
             break
-    return
 
 def paint_empty_row(cake, r, c):
     for i in reversed(xrange(0, r)):
@@ -31,7 +30,6 @@ def paint_empty_row(cake, r, c):
            cake[i] = cake[i-1]
         else:
             break
-    return
 
 def alphabet_cake():
     R, C = map(int, raw_input().strip().split())
