@@ -53,10 +53,7 @@ def cure_time_for_debuff(Hd, Ak, D, cur_Hd, pre_d, d, c_period):
         return 0, cur_Hd - (a + Ak-d*D) * ((a - Ak+d*D)/D+1) / 2
 
     # periodical part
-    c = 1
-    cur_Hd = Hd - (Ak-x*D)
-    z = x
-    c_period = (Hd-1) // (Ak-x*D)
+    c, c_period, cur_Hd = 1, (Hd-1) // (Ak-x*D), Hd - (Ak-x*D)
     if 2 <= c_period <= (d-x):
         c += (d-x-1)//(c_period-1)
         x += (d-x-1)//(c_period-1) * (c_period-1)
