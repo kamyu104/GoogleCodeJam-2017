@@ -70,14 +70,17 @@ def cure_turn_for_debuff(Hd, Ak, D, cur_Hd, pre_d, d, c_period):
     # periodical part
     c, c_period, cur_Hd, y = 1, (Hd-1) // (Ak-x*D), Hd - (Ak-x*D), x
     if 2 <= c_period <= (d-x):
-        c += (d-x-1)//(c_period-1)
-        y += (d-x-1)//(c_period-1) * (c_period-1)
+        c += (d-x-1-1)//(c_period-1)
+        y += (d-x-1-1)//(c_period-1) * (c_period-1)
         cur_Hd = Hd - (Ak-y*D)
-
+        
     # y part
     a = Ak - (y+1) * D
-    cur_Hd -= (a + Ak-d*D) * ((a - Ak+d*D)/D+1) / 2
-    assert (cur_Hd > 0 and (a + Ak-d*D) * ((a - Ak+d*D)/D+1) / 2 > 0)
+    if cur_Hd - (a + Ak-d*D) * ((a - Ak+d*D)/D+1) / 2 <= 0:
+        c += 1
+        cur_Hd = Hd - (Ak-(d-1)*D) - (Ak-d*D)
+    else:
+        cur_Hd -= (a + Ak-d*D) * ((a - Ak+d*D)/D+1) / 2
     return c, cur_Hd
 
 def play_the_dragon():
