@@ -76,11 +76,8 @@ def cure_turn_for_debuff(Hd, Ak, D, cur_Hd, pre_d, d, c_period):
 
     # y part
     a = Ak - (y+1) * D
-    if cur_Hd - (a + Ak-d*D) * ((a - Ak+d*D)/D+1) / 2 <= 0:
-        c += 1
-        cur_Hd = Hd - (Ak-(d-1)*D) - (Ak-d*D)
-    else:
-        cur_Hd -= (a + Ak-d*D) * ((a - Ak+d*D)/D+1) / 2
+    cur_Hd -= (a + Ak-d*D) * ((a - Ak+d*D)/D+1) / 2
+    assert (cur_Hd > 0 and (a + Ak-d*D) * ((a - Ak+d*D)/D+1) / 2 > 0)
     return c, cur_Hd
 
 def play_the_dragon():
