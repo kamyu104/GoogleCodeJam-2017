@@ -69,7 +69,6 @@ def cure_turn_for_debuff(Hd, Ak, D, cur_Hd, pre_d, d, c_period):
         cur_Hd -= (a + Ak-d*D) * ((a - Ak+d*D)/D+1) / 2
     return c, cur_Hd
 
-
 def play_the_dragon():
     Hd, Ad, Hk, Ak, B, D = map(int, raw_input().strip().split())
     min_b_a = float("inf")
