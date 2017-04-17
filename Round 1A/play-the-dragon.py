@@ -6,7 +6,9 @@
 # Time:  O(sqrt(N))
 # Space: O(1)
 #
+
 from math import ceil
+
 # Hd - i * (Ak - d * D) >= 1
 # 1. given d, find max of i s.t. i <= (Hd-1)/(Ak-d*D)
 #    i = (Hd-1)//(Ak-d*D)
@@ -32,9 +34,8 @@ def possible_d_with_c_period(Hd, Ak, D):
 
 def cure_time_for_debuff(Hd, Ak, D, cur_Hd, pre_d, d, c_period):
     # |x|period-1|period-1|period-1|y|
-    # |period-1|period-1|period-1|y|
-    # |x|period-1|period-1|period-1|
-    # |x|
+
+    # x part
     if d == 0 or c_period == float("inf"):
         return 0, cur_Hd
     a = Ak - (pre_d+1) * D
@@ -43,7 +44,7 @@ def cure_time_for_debuff(Hd, Ak, D, cur_Hd, pre_d, d, c_period):
     elif D*D + 4*a*a + 4*a*D - 8*cur_Hd*D >= 0:
         x = min(d, int(ceil((2*Ak - D - (D*D + 4*a*a + 4*a*D - 8*cur_Hd*D) ** 0.5) / (2*D)) - 1))
         cur_Hd -= (a + Ak-x*D) * ((a - Ak+x*D)/D+1) / 2
-        if x+1 <= d and cur_Hd - (Ak - (x+1) * D) > 0:  # adjust big number problem
+        if x+1 <= d and cur_Hd - (Ak - (x+1) * D) > 0:  # adjust accuracy of big number problem
             cur_Hd -= Ak - (x+1) * D
             x += 1
         if x == d:
@@ -51,6 +52,7 @@ def cure_time_for_debuff(Hd, Ak, D, cur_Hd, pre_d, d, c_period):
     else:
         return 0, cur_Hd - (a + Ak-d*D) * ((a - Ak+d*D)/D+1) / 2
 
+    # periodical part
     c = 1
     cur_Hd = Hd - (Ak-x*D)
     z = x
@@ -60,6 +62,8 @@ def cure_time_for_debuff(Hd, Ak, D, cur_Hd, pre_d, d, c_period):
             c += (d-x-1)//(c_period-1)
             x += (d-x-1)//(c_period-1) * (c_period-1)
             cur_Hd = Hd - (Ak-x*D)
+
+    # y part
     a = Ak - (x+1) * D
     if cur_Hd - (a + Ak-d*D) * ((a - Ak+d*D)/D+1) / 2 <= 0:
         c += 1
@@ -89,7 +93,6 @@ def play_the_dragon():
         # |(cur_Hd-1)//(Ak-d*D)| min_b_a-1 - (cur_Hd-1)//(Ak-d*    D)       | 1 |
         # |                    | c_period-1 | c_period-1 | ... | c_period-1 |   |
         #                                                         (no cure)
-        #print(cur_Hd-1)//(Ak-d*D), min_b_a-1 - (cur_Hd-1)//(Ak-d*D)
         if (Ak-d*D) > 0 and min_b_a-1 > (cur_Hd-1)//(Ak-d*D):
             if c_period <= 1:
                 pre_d = d
@@ -97,7 +100,6 @@ def play_the_dragon():
             c_for_min_b_a = 1 + (min_b_a-1 - (cur_Hd-1)//(Ak-d*D) - 1)//(c_period-1)
 
         turn = d + c_for_d + min_b_a + c_for_min_b_a
-        #print turn, "=", d, c_for_d, min_b_a, c_for_min_b_a, "Hd =", cur_Hd, "p =", c_period
         min_d_c_b_a = min(min_d_c_b_a, turn)
         pre_d = d
     return min_d_c_b_a if min_d_c_b_a != float("inf") else "IMPOSSIBLE"
