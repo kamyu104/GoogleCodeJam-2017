@@ -82,8 +82,8 @@ def play_the_dragon():
     c_for_d = 0
     pre_d, cur_Hd = 0, Hd
     for d, c_period in possible_d_with_c_period(Hd, Ak, D): # O(sqrt(N))
-        tmp, cur_Hd = cure_time_for_debuff(Hd, Ak, D, cur_Hd, pre_d, d, c_period)
-        c_for_d += tmp
+        cur_c_for_d, cur_Hd = cure_time_for_debuff(Hd, Ak, D, cur_Hd, pre_d, d, c_period)
+        c_for_d += cur_c_for_d
         c_for_min_b_a = 0
         # first cure and periodical cure
         # |(cur_Hd-1)//(Ak-d*D)| min_b_a-1 - (cur_Hd-1)//(Ak-d*    D)       | 1 |
