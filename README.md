@@ -17,5 +17,5 @@ Python solutions of Google Code Jam 2017.
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
 |A| [Alphabet Cake](https://code.google.com/codejam/contest/5304486/dashboard#s=p0)| [Python](./Round%201A/alphabet-cake.py)| _O(R * C)_ | _O(1)_ | Easy | | Greedy |
-|B| [Ratatouille](https://code.google.com/codejam/contest/5304486/dashboard#s=p21)| [Python](./Round%201A/ratatouille.py)| _O(N^2 * P^2)_ | _O(N * P)_ | Normal | | Greedy |
+|B| [Ratatouille](https://code.google.com/codejam/contest/5304486/dashboard#s=p1)| [Python](./Round%201A/ratatouille.py)| _O(N^2 * P^2)_ | _O(N * P)_ | Normal | | Greedy |
 |C| [Play The Dragon](https://code.google.com/codejam/contest/5304486/dashboard#s=p2)| [Python](./Round%201A/play-the-dragon.py)| _O(sqrt(N))_ | _O(1)_ | Hard | | Math Analysis |
