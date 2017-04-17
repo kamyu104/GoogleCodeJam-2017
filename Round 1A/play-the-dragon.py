@@ -75,7 +75,7 @@ def cure_turn_for_debuff(Hd, Ak, D, cur_Hd, pre_d, d, c_period):
         if (d-x-1-1)//(c_period-1) > 0:
             cur_Hd = Hd - (Ak-y*D)
         
-    # y part
+    # y part, at most c_period debuff, possibly required curing
     a = Ak - (y+1) * D
     if cur_Hd - (a + Ak-d*D) * ((a - Ak+d*D)/D+1) / 2 <= 0:
         c += 1
