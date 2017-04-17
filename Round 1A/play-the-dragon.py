@@ -32,6 +32,21 @@ def possible_d_with_c_period(Hd, Ak, D):
             return
     yield (Ak+D-1)//D, float("inf")
 
+def cure_time_for_debuff_without_optimization(Hd, Ak, D, cur_Hd, pre_d, d, c_period):
+    if d == 0 or c_period == float("inf"):
+        return 0, cur_Hd
+    c = 0
+    while pre_d < d:
+        pre_d += 1
+        if cur_Hd - (Ak - pre_d * D) > 0:
+            cur_Hd -= (Ak - pre_d * D)
+            print c, pre_d, cur_Hd, (Ak - pre_d * D)
+        else:
+            pre_d -= 1
+            c += 1
+            cur_Hd = Hd - (Ak - pre_d * D)
+    return c, cur_Hd
+
 def cure_turn_for_debuff(Hd, Ak, D, cur_Hd, pre_d, d, c_period):
     if d == 0 or c_period == float("inf"):
         return 0, cur_Hd
