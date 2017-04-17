@@ -33,11 +33,12 @@ def possible_d_with_c_period(Hd, Ak, D):
     yield (Ak+D-1)//D, float("inf")
 
 def cure_turn_for_debuff(Hd, Ak, D, cur_Hd, pre_d, d, c_period):
+    if d == 0 or c_period == float("inf"):
+        return 0, cur_Hd
+
     # |x|period-1|period-1|period-1|y|
 
     # x part
-    if d == 0 or c_period == float("inf"):
-        return 0, cur_Hd
     a = Ak - (pre_d+1) * D
     if cur_Hd - (Ak - (pre_d+1) * D) <= 0:
         x = pre_d
