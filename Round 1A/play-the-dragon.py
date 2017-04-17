@@ -40,7 +40,6 @@ def cure_time_for_debuff_without_optimization(Hd, Ak, D, cur_Hd, pre_d, d, c_per
         pre_d += 1
         if cur_Hd - (Ak - pre_d * D) > 0:
             cur_Hd -= (Ak - pre_d * D)
-            print c, pre_d, cur_Hd, (Ak - pre_d * D)
         else:
             pre_d -= 1
             c += 1
