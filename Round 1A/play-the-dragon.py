@@ -54,14 +54,14 @@ def cure_turn_for_debuff(Hd, Ak, D, cur_Hd, pre_d, d, c_period):
         return 0, cur_Hd - (a + Ak-d*D) * ((a - Ak+d*D)/D+1) / 2
 
     # periodical part
-    c, c_period, cur_Hd = 1, (Hd-1) // (Ak-x*D), Hd - (Ak-x*D)
+    c, c_period, cur_Hd, y = 1, (Hd-1) // (Ak-x*D), Hd - (Ak-x*D), x
     if 2 <= c_period <= (d-x):
         c += (d-x-1)//(c_period-1)
-        x += (d-x-1)//(c_period-1) * (c_period-1)
-        cur_Hd = Hd - (Ak-x*D)
+        y += (d-x-1)//(c_period-1) * (c_period-1)
+        cur_Hd = Hd - (Ak-y*D)
 
     # y part
-    a = Ak - (x+1) * D
+    a = Ak - (y+1) * D
     if cur_Hd - (a + Ak-d*D) * ((a - Ak+d*D)/D+1) / 2 <= 0:
         c += 1
         cur_Hd = Hd - (Ak-(d-1)*D) - (Ak-d*D)
