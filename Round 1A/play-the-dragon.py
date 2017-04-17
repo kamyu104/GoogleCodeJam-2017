@@ -57,11 +57,10 @@ def cure_time_for_debuff(Hd, Ak, D, cur_Hd, pre_d, d, c_period):
     cur_Hd = Hd - (Ak-x*D)
     z = x
     c_period = (Hd-1) // (Ak-x*D)
-    if c_period >= 2:
-        if (d-x-1) > 0 and (d-x-1) >=(c_period-1):
-            c += (d-x-1)//(c_period-1)
-            x += (d-x-1)//(c_period-1) * (c_period-1)
-            cur_Hd = Hd - (Ak-x*D)
+    if 2 <= c_period <= (d-x):
+        c += (d-x-1)//(c_period-1)
+        x += (d-x-1)//(c_period-1) * (c_period-1)
+        cur_Hd = Hd - (Ak-x*D)
 
     # y part
     a = Ak - (x+1) * D
