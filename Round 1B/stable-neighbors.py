@@ -20,8 +20,8 @@ def stable_neighbors():
         sort = sorted(((R - G, "R"), (Y - V, "Y"), (B - O, "B")))
         if sort[2][0] <= sort[1][0] + sort[0][0]:
             result = (sort[2][1] + sort[1][1] + sort[0][1]) * (sort[1][0] + sort[0][0] - sort[2][0]) + \
-                    (sort[2][1] + sort[1][1]) * (sort[2][0] - sort[0][0]) + \
-                    (sort[2][1] + sort[0][1]) * (sort[2][0] - sort[1][0])
+                     (sort[2][1] + sort[1][1]) * (sort[2][0] - sort[0][0]) + \
+                     (sort[2][1] + sort[0][1]) * (sort[2][0] - sort[1][0])
             if G:
                 result = result.replace("R", "R" + "GR" * G, 1)
             if V:
