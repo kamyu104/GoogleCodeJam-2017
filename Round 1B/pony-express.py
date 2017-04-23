@@ -23,7 +23,7 @@ def pony_express():
     D = [map(int, raw_input().strip().split()) for _ in xrange(N)]
     U_V = [map(int, raw_input().strip().split()) for _ in xrange(Q)]
 
-    D = [[float(float("inf") if k == -1 else k) for k in D[i]] for i in xrange(N)]
+    D = [[float("inf") if k == -1 else float(k) for k in D[i]] for i in xrange(N)]
     solve(N, D)
     D = [[float("inf") if k > E[i] else float(k)/S[i] for k in D[i]] for i in xrange(N)]
     solve(N, D)
