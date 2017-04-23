@@ -24,9 +24,9 @@ def pony_express():
     U_V = [map(int, raw_input().strip().split()) for _ in xrange(Q)]
 
     D = [[float("inf") if k == -1 else float(k) for k in D[i]] for i in xrange(N)]
-    solve(N, D)
+    solve(N, D) # find min distance
     D = [[float("inf") if k > E[i] else float(k)/S[i] for k in D[i]] for i in xrange(N)]
-    solve(N, D)
+    solve(N, D) # find min time
     result = [D[U-1][V-1] for (U,V) in U_V]
 
     return " ".join(str(i) for i in result)
