@@ -7,7 +7,7 @@
 # Space: O(1)
 #
 
-def floyd_warshall (N, D):
+def floyd_warshall(N, D):
     for j in xrange(N):
         for i in xrange(N):
             for k in xrange(N):
