@@ -8,10 +8,10 @@
 #
 
 def floyd_warshall(N, D):
-    for j in xrange(N):
+    for k in xrange(N):
         for i in xrange(N):
-            for k in xrange(N):
-                D[i][k] = min(D[i][k], D[i][j]+D[j][k])
+            for j in xrange(N):
+                D[i][j] = min(D[i][j], D[i][k]+D[k][j])
 
 def pony_express():
     N, Q = map(int, raw_input().strip().split())
