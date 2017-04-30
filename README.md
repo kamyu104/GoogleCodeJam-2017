@@ -1,10 +1,11 @@
-# [GoogleCodeJam 2017](https://code.google.com/codejam/contests.html) ![Language](https://img.shields.io/badge/language-Python-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.md) ![Progress](https://img.shields.io/badge/progress-10%20%2F%2010-ff69b4.svg)
+# [GoogleCodeJam 2017](https://code.google.com/codejam/contests.html) ![Language](https://img.shields.io/badge/language-Python-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.md) ![Progress](https://img.shields.io/badge/progress-13%20%2F%2013-ff69b4.svg)
 
 Python solutions of Google Code Jam 2017.
 
 * [Qualification Round](https://github.com/kamyu104/GoogleCodeJam-2017#qualification-round)
 * [Round 1A](https://github.com/kamyu104/GoogleCodeJam-2017#round-1a)
 * [Round 1B](https://github.com/kamyu104/GoogleCodeJam-2017#round-1b)
+* [Round 1C](https://github.com/kamyu104/GoogleCodeJam-2017#round-1c)
 
 ## Qualification Round
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
@@ -27,3 +28,10 @@ Python solutions of Google Code Jam 2017.
 |A| [Steed 2: Cruise Control](https://code.google.com/codejam/contest/8294486/dashboard#s=p0)| [Python](./Round%201B/cruise-control.py)| _O(N)_ | _O(1)_ | Easy | | Math Analysis |
 |B| [Stable Neigh-bors](https://code.google.com/codejam/contest/8294486/dashboard#s=p1)| [Python](./Round%201B/stable-neighbors.py)| _O(N)_ | _O(1)_ | Hard | | Math Analysis |
 |C| [Pony Express](https://code.google.com/codejam/contest/8294486/dashboard#s=p2)| [Python](./Round%201B/pony-express.py)| _O(N^3)_ | _O(1)_ | Medium | | Floyd-Warshall |
+
+## Round 1C
+| # | Title | Solution | Time | Space | Difficulty | Tag | Note |
+|---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
+|A| [Ample Syrup](https://code.google.com/codejam/contest/3274486/dashboard#s=p0)| [Python](./Round%201C/ample-syrup.py)| _O(N * logK)_ | _O(K)_ | Easy | | Heap, Sort |
+|B| [Parenting Partnering](https://code.google.com/codejam/contest/3274486/dashboard#s=p1)| [Python](./Round%201C/parenting-partnering.py)| _O(NlogN)_ | _O(N)_ | Medium | | Sort |
+|C| [Core Training](https://code.google.com/codejam/contest/3274486/dashboard#s=p2)| [Python](./Round%201C/pony-express.py)| _O(N^2 * K)_ | _O(K)_ | Medium | | DP, Probability|
