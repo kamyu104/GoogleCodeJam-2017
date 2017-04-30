@@ -34,4 +34,4 @@ Python solutions of Google Code Jam 2017.
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
 |A| [Ample Syrup](https://code.google.com/codejam/contest/3274486/dashboard#s=p0)| [Python](./Round%201C/ample-syrup.py)| _O(N * logK)_ | _O(K)_ | Easy | | Sort, Heap |
 |B| [Parenting Partnering](https://code.google.com/codejam/contest/3274486/dashboard#s=p1)| [Python](./Round%201C/parenting-partnering.py)| _O(NlogN)_ | _O(N)_ | Medium | | Sort, Greedy |
-|C| [Core Training](https://code.google.com/codejam/contest/3274486/dashboard#s=p2)| [Python](./Round%201C/core-training.py)| _O(N^2 * K)_ | _O(K)_ | Hard | | DP, Probability|
+|C| [Core Training](https://code.google.com/codejam/contest/3274486/dashboard#s=p2)| [Python](./Round%201C/core-training.py)| _O(N^2 * K)_ | _O(N)_ | Hard | | DP, Probability|
