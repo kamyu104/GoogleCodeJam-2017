@@ -48,8 +48,8 @@ def core_training():
         tmp_probs = upfill(list(Ps), U, start_index)
         if start_index-1 < 0 or tmp_probs[start_index-1] < tmp_probs[start_index]:
             result = max(result, calc(tmp_probs, K))
-            if tmp_probs[start_index] == 1.0:
-                break
+        if tmp_probs[start_index] == 1.0:
+            break
     return result
 
 for case in xrange(input()):
