@@ -34,8 +34,7 @@ def upfill(probs, U, start_index):
         else:
             probs[i] += U
             break
-    found = (start_index-1 < 0 or probs[start_index-1] < probs[start_index])
-    return found, probs
+    return probs
 
 
 def core_training():
@@ -47,9 +46,11 @@ def core_training():
     result = 0.0
     Ps.sort()
     for start_index in xrange(len(Ps)):
-        found, tmp_probs = upfill(list(Ps), U, start_index)
-        if found:
+        tmp_probs = upfill(list(Ps), U, start_index)
+        if start_index-1 < 0 or tmp_probs[start_index-1] < tmp_probs[start_index]:
             result = max(result, calc(tmp_probs, K))
+            if tmp_probs[start_index] == 1.0:
+                break
     return result
 
 for case in xrange(input()):
