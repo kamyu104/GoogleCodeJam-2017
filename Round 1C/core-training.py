@@ -45,7 +45,6 @@ def core_training():
     Ps.sort()
 
     result = 0.0
-    Ps.sort()
     for fill_down in [False, True]:
         probs = list(Ps)
         left_unit = U
