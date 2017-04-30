@@ -36,7 +36,6 @@ def upfill(probs, U, start_index):
             break
     return probs
 
-
 def core_training():
     N, K = map(int, raw_input().strip().split())
     U = float(input())
