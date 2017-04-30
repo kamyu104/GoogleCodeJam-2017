@@ -3,7 +3,7 @@
 # Google Code Jam 2017 Round 1C - Problem A. Ample Syrup
 # https://code.google.com/codejam/contest/3274486/dashboard#s=p0
 #
-# Time:  O(N * logK)
+# Time:  O(NlogK)
 # Space: O(K)
 #
 

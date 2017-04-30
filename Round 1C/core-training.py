@@ -4,7 +4,7 @@
 # https://code.google.com/codejam/contest/3274486/dashboard#s=p2
 #
 # Time:  O(N^2 * K)
-# Space: O(K)
+# Space: O(N)
 #
 
 def calc(probs, K):
@@ -46,10 +46,21 @@ def core_training():
     Ps.sort()
 
     result = 0.0
+<<<<<<< HEAD
     Ps.sort()
     for start_index in xrange(len(Ps)):
         found, tmp_probs = upfill(list(Ps), U, start_index)
         if found:
+=======
+    for fill_down in [False, True]:
+        probs = list(Ps)
+        left_unit = U
+        if fill_down:
+            probs = downfill(probs, left_unit)
+            left_unit = sum(Ps) + U - sum(probs)
+        for start_index in xrange(len(Ps)):
+            tmp_probs = upfill(list(probs), left_unit, start_index)
+>>>>>>> 8f70ab832ed1c52791016be2b9683ac1eefc3ebf
             result = max(result, calc(tmp_probs, K))
     return result
 
