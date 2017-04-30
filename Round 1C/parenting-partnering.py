@@ -1,7 +1,7 @@
 # Copyright (c) 2017 kamyu. All rights reserved.
 #
-# Google Code Jam 2017 Round 1C - Problem A. Ample Syrup
-# https://code.google.com/codejam/contest/3274486/dashboard#s=p0
+# Google Code Jam 2017 Round 1C - Problem B. Parenting Partnering
+# https://code.google.com/codejam/contest/3274486/dashboard#s=p1
 #
 # Time:  O((A_C + A_J) * log(A_C + A_J))
 # Space: O(A_C + A_J)
