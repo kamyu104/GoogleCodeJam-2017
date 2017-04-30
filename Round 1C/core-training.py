@@ -4,7 +4,7 @@
 # https://code.google.com/codejam/contest/3274486/dashboard#s=p2
 #
 # Time:  O(N^2 * K)
-# Space: O(K)
+# Space: O(N)
 #
 
 def calc(probs, K):
