@@ -28,9 +28,8 @@ def upfill(probs, U, start_index):
         if U <= 0.0:
             break
     for i in reversed(xrange(start_index)):
-        d = probs[i+1] - probs[i]
-        if U > d:
-            probs[i] = probs[i+1]
+        if U > 1.0 - probs[i]:
+            probs[i] = 1.0
             U -= d
         else:
             probs[i] += U
