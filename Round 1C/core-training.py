@@ -27,16 +27,16 @@ def upfill(probs, U, start_index):
             U -= add
         if U <= 0.0:
             break
-    return probs
-
-def downfill(probs, U):
-    for i in reversed(xrange(len(probs))):
-        if probs[i] + U >= 1.0:
-            U -= 1.0 - probs[i]
-            probs[i] = 1.0
-        if U <= 0.0:
+    for i in reversed(xrange(start_index)):
+        d = probs[i+1] - probs[i]
+        if U > d:
+            probs[i] = probs[i+1]
+            U -= d
+        else:
+            probs[i] += U
             break
     return probs
+
 
 def core_training():
     N, K = map(int, raw_input().strip().split())
@@ -46,15 +46,9 @@ def core_training():
 
     result = 0.0
     Ps.sort()
-    for fill_down in [False, True]:
-        probs = list(Ps)
-        left_unit = U
-        if fill_down:
-            probs = downfill(probs, left_unit)
-            left_unit = sum(Ps) + U - sum(probs)
-        for start_index in xrange(len(Ps)):
-            tmp_probs = upfill(list(probs), left_unit, start_index)
-            result = max(result, calc(tmp_probs, K))
+    for start_index in xrange(len(Ps)):
+        tmp_probs = upfill(list(Ps), U, start_index)
+        result = max(result, calc(tmp_probs, K))
     return result
 
 for case in xrange(input()):
