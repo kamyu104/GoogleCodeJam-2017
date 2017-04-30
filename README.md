@@ -26,4 +26,4 @@ Python solutions of Google Code Jam 2017.
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
 |A| [Steed 2: Cruise Control](https://code.google.com/codejam/contest/8294486/dashboard#s=p0)| [Python](./Round%201B/cruise-control.py)| _O(N)_ | _O(1)_ | Easy | | Math Analysis |
 |B| [Stable Neigh-bors](https://code.google.com/codejam/contest/8294486/dashboard#s=p1)| [Python](./Round%201B/stable-neighbors.py)| _O(N)_ | _O(1)_ | Hard | | Math Analysis |
-|C| [Pony Express](https://code.google.com/codejam/contest/8294486/dashboard#s=p2)| [Python](./Round%201B/pony-express.py)| _O(N^3)_ | _O(1)_ | Medium | | Graph |
+|C| [Pony Express](https://code.google.com/codejam/contest/8294486/dashboard#s=p2)| [Python](./Round%201B/pony-express.py)| _O(N^3)_ | _O(1)_ | Medium | | Floyd-Warshall |
