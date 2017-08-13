@@ -57,6 +57,7 @@ def cure_turn_for_debuff(Hd, Ak, D, cur_Hd, pre_d, d, c_period):
     if cur_Hd - (Ak - (pre_d+1) * D) <= 0:
         x = pre_d
     elif D*D + 4*a*a + 4*a*D - 8*cur_Hd*D >= 0:
+        # x <= d, find max x s.t. cur_Hd - (a + Ak-x*D) * ((a - Ak+x*D)/D+1) / 2 > 0
         x = min(d, int(ceil((2*Ak - D - (D*D + 4*a*a + 4*a*D - 8*cur_Hd*D) ** 0.5) / (2*D)) - 1))
         cur_Hd -= (a + Ak-x*D) * ((a - Ak+x*D)/D+1) / 2
         if x+1 <= d and cur_Hd - (Ak - (x+1) * D) > 0:  # adjust x for inaccuracy of big float number
