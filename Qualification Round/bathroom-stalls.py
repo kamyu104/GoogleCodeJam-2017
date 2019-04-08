@@ -28,7 +28,7 @@
 def max_min(n):
     return ((n+1)//2, n//2)
 
-def bathroom_stalls2():
+def bathroom_stalls2():  # implemented by conclusion
     N, K = map(int, raw_input().strip().split())
     while K > 1:
         if N % 2 == 0 and K % 2 == 1:
@@ -37,7 +37,7 @@ def bathroom_stalls2():
 
     return max_min(N-1)
 
-def bathroom_stalls():
+def bathroom_stalls():  # implemented by intuition
     N, K = map(int, raw_input().strip().split())
     while K > 1:
         M, m = max_min(N-1)
