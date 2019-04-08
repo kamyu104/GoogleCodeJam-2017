@@ -7,13 +7,23 @@
 # Space: O(1)
 #
 
-#  we can reduce the problem by the following rules:
-#  - bathroom_stalls(2N+2, 2K+2) = bathroom_stalls(N+1, K+1)
-#  - bathroom_stalls(2N+3, 2K+2) = bathroom_stalls(N+1, K+1)
-#  - bathroom_stalls(2N+2, 2K+3) = bathroom_stalls(N,   K+1)
-#  - bathroom_stalls(2N+3, 2K+3) = bathroom_stalls(N+1, K+1)
-#  - bathroom_stalls(2N+2,    1) = (N+1, N)
-#  - bathroom_stalls(2N+1,    1) = (N,   N)
+# 1. after the first person chooses the mid stall of the single row,
+#    the stalls splits into left and right groups. 
+#
+# 2. by intuition, the following people would choose a stall from each group alternatively
+#    and can always find a vacant block with non-increasing size. 
+#    this could be easily proved by the mathematical induction, and we skip here.
+# 
+# 3. hence, we can check if the number of remaining people is odd or even
+#    to find the last vacant block entered by the last person.
+#
+# 4. by conclusion, we can reduce the problem by the following rules:
+#    - bathroom_stalls(2N+2, 2K+2) = bathroom_stalls(N+1, K+1)
+#    - bathroom_stalls(2N+3, 2K+2) = bathroom_stalls(N+1, K+1)
+#    - bathroom_stalls(2N+2, 2K+3) = bathroom_stalls(N,   K+1)
+#    - bathroom_stalls(2N+3, 2K+3) = bathroom_stalls(N+1, K+1)
+#    - bathroom_stalls(2N+2,    1) = (N+1, N)
+#    - bathroom_stalls(2N+1,    1) = (N,   N)
 
 def max_min(n):
     return ((n+1)//2, n//2)
