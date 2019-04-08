@@ -12,6 +12,14 @@ def max_min(n):
 
 def bathroom_stalls():
     N, K = map(int, raw_input().strip().split())
+    #  we can reduce the problem by the following rules:
+    #  - bathroom_stalls(2N+2, 2K+2) = bathroom_stalls(N+1, K+1)
+    #  - bathroom_stalls(2N+1, 2K+2) = bathroom_stalls(N,   K+1)
+    #  - bathroom_stalls(2N+2, 2K+1) = bathroom_stalls(N,   K)
+    #  - bathroom_stalls(2N+1, 2K+1) = bathroom_stalls(N,   K)
+    #  - bathroom_stalls(2N+2,    1) = (N+1, N)
+    #  - bathroom_stalls(2N+1,    1) = (N,   N)
+
     while K > 1:
         M, m = max_min(N-1)
         K -= 1
