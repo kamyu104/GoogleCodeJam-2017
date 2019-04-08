@@ -17,7 +17,7 @@
 # 3. hence, we can check if the number of the remaining people is odd or even
 #    to find the last vacant block entered by the last person.
 #
-# 4. by conclusion, we can reduce the problem by the following rules:
+# 4. by conclusion, we can reduce the problem by the following rules (N >= 0, K >= 0): 
 #    - bathroom_stalls(2N+2, 2K+2) = bathroom_stalls(N+1, K+1)
 #    - bathroom_stalls(2N+3, 2K+2) = bathroom_stalls(N+1, K+1)
 #    - bathroom_stalls(2N+2, 2K+3) = bathroom_stalls(N,   K+1)
