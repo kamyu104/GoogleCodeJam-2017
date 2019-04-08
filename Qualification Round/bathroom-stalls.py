@@ -15,6 +15,9 @@
 #  - bathroom_stalls(2N+2,    1) = (N+1, N)
 #  - bathroom_stalls(2N+1,    1) = (N,   N)
 
+def max_min(n):
+    return ((n+1)//2, n//2)
+
 def bathroom_stalls2():
     N, K = map(int, raw_input().strip().split())
     while K > 1:
@@ -22,10 +25,7 @@ def bathroom_stalls2():
             N -= 1
         N, K = N//2, K//2
 
-    return (N//2, N//2) if N % 2 == 1 else (N//2, N//2-1)
-
-def max_min(n):
-    return ((n+1)//2, n//2)
+    return max_min(N-1)
 
 def bathroom_stalls():
     N, K = map(int, raw_input().strip().split())
