@@ -14,7 +14,7 @@
 #    and can always find a vacant block with non-increasing size. 
 #    this could be easily proved by the mathematical induction, and we skip here.
 # 
-# 3. hence, we can check if the number of remaining people is odd or even
+# 3. hence, we can check if the number of the remaining people is odd or even
 #    to find the last vacant block entered by the last person.
 #
 # 4. by conclusion, we can reduce the problem by the following rules:
