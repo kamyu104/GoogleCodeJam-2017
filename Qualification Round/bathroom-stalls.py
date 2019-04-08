@@ -8,7 +8,7 @@
 #
 
 # 1. after the first person chooses the mid stall of the single row,
-#    the stalls are split into left and right groups. 
+#    the remaining stalls are split into left and right groups. 
 #
 # 2. by intuition, the following people would choose a stall from each group alternatively
 #    and can always find a vacant block with non-increasing size. 
