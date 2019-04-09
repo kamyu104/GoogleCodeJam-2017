@@ -57,4 +57,4 @@ def bathroom_stalls():  # implemented by intuition
     return max_min(N-1)
 
 for case in xrange(input()):
-    print 'Case #{}: {} {}'.format(case+1, *bathroom_stalls())
+    print 'Case #{}: {} {}'.format(case+1, *bathroom_stalls3())
