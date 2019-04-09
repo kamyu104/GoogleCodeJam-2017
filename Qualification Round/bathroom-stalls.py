@@ -13,11 +13,16 @@
 # 2. by intuition, the following people would choose a stall from each group alternatively
 #    and can always find a vacant block with non-increasing size. 
 #    this could be easily proved by the mathematical induction, and we skip here.
-# 
-# 3. hence, we can check if the number of the remaining people is odd or even
-#    to find the last vacant block entered by the last person.
 #
-# 4. by conclusion, we can reduce the problem by the following rules (N >= 0, K >= 0): 
+# 3. another way is to think it as a balanced binary search tree, 
+#    where the number of nodes in left subtree is at most 1 more than the number of right one.
+#    people visit root first and then visit the left and right subtree of the root alternstively.
+#    the answer is the number of nodes in left and right subtree of the last visited node.
+#
+# 4. hence, we can check if the number of the remaining people is odd or even
+#    to find the last vacant block entered by the last person.
+#    
+# 5. by conclusion, we can reduce the problem by the following rules (N >= 0, K >= 0): 
 #    - bathroom_stalls(2N+2, 2K+2) = bathroom_stalls(N+1, K+1)
 #    - bathroom_stalls(2N+3, 2K+2) = bathroom_stalls(N+1, K+1)
 #    - bathroom_stalls(2N+2, 2K+3) = bathroom_stalls(N,   K+1)
