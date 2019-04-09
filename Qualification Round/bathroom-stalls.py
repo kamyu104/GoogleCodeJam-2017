@@ -31,12 +31,12 @@
 #    - bathroom_stalls(2N+2,    1) = (N+1, N)
 #    - bathroom_stalls(2N+1,    1) = (N,   N)
 
-def max_min(n):
+def bigger_smaller(n):
     return ((n+1)//2, n//2)
 
 def bathroom_stalls3():  # simplified by bit operation of bathroom_stalls2
     N, K = map(int, raw_input().strip().split())
-    return max_min((N-K) >> (K.bit_length()-1))
+    return bigger_smaller((N-K) >> (K.bit_length()-1))
 
 def bathroom_stalls2():  # implemented by conclusion
     N, K = map(int, raw_input().strip().split())
@@ -45,16 +45,16 @@ def bathroom_stalls2():  # implemented by conclusion
             N -= 1
         N, K = N//2, K//2
 
-    return max_min(N-1)
+    return bigger_smaller(N-1)
 
 def bathroom_stalls():  # implemented by intuition
     N, K = map(int, raw_input().strip().split())
     while K > 1:
-        M, m = max_min(N-1)
-        K -= 1
-        N, K = (M if K % 2 == 1 else m), (K+1)//2
+        bigger_N, smaller_N = bigger_smaller(N-1)
+        bigger_K, smaller_K = bigger_smaller(K-1)
+        N, K = (bigger_N, bigger_K) if (K-1) % 2 == 1 else (smaller_N, smaller_K)
 
-    return max_min(N-1)
+    return bigger_smaller(N-1)
 
 for case in xrange(input()):
     print 'Case #{}: {} {}'.format(case+1, *bathroom_stalls3())
