@@ -16,7 +16,7 @@
 #
 # 3. another way is to think it as a balanced binary search tree, 
 #    where the number of nodes in left subtree is at most 1 more than the number of right one.
-#    people visit root first and then visit the left and right subtree of the root alternstively.
+#    people visit root first and then visit the left and right subtree of the root alternatively.
 #    the answer is the number of nodes in left and right subtree of the last visited node.
 #
 # 4. hence, we can check if the number of the remaining people is odd or even
