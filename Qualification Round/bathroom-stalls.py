@@ -18,7 +18,7 @@
 #    where the number of nodes in left subtree is at most 1 more than the number of right one.
 #    people visit the root first and then visit the left and right subtree of the root alternatively.
 #    the answer is the number of nodes in left and right subtree of the last visited node.
-#    you can always find a subtree with non-increasing number of nodes in this rule.
+#    people can always find a subtree with non-increasing number of nodes in this rule.
 #
 # 4. hence, we can check if the number of the remaining people is odd or even
 #    to find the last vacant block entered by the last person.
