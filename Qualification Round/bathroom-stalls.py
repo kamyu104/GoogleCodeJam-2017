@@ -17,7 +17,7 @@
 # 3. another way is to think a stall as a node in balanced binary search tree, 
 #    where the number of nodes in left subtree of each node is at most 1 more than
 #    the number of right subtree of that node.
-#    people visit the root of BST first and then visit the left and right subtree of the root alternatively.
+#    people visit the root of the balanced BST first and then visit the left and right subtree of the root alternatively.
 #    the answer is the number of nodes in left and right subtree of the last visited node.
 #    people can always find a subtree with non-increasing number of nodes in this rule.
 #
