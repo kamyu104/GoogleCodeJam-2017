@@ -7,24 +7,23 @@
 # Space: O(1)
 #
 
-# 1. after the first person chooses the mid stall of the single row,
-#    the remaining stalls are split into left and right groups. 
-#
-# 2. by intuition, the following people would choose a stall from each group alternatively
+# 1. by intuition, after the first person chooses the mid stall of the single row,
+#    the remaining stalls are split into left and right groups.
+#    the following people would choose a stall from each group alternatively
 #    and can always find a vacant block with non-increasing size. 
 #    this could be easily proved by the mathematical induction, and we skip here.
 #
-# 3. another way is to think a stall as a node in balanced binary search tree, 
+# 2. another way is to think a stall as a node in balanced binary search tree, 
 #    where the number of nodes in left subtree of each node is at most 1 more than
 #    the number of right subtree of that node.
-#    people visit the root of the balanced BST first and then visit the left and right subtree of the root alternatively.
+#    people visit the root of the balanced BST first and then visit the left and right subtree of the root alternatively
+#    and can always find a subtree with non-increasing number of nodes in this rule.
 #    the answer is the number of nodes in left and right subtree of the last visited node.
-#    people can always find a subtree with non-increasing number of nodes in this rule.
 #
-# 4. hence, we can check if the number of the remaining people is odd or even
-#    to find the last vacant block entered by the last person.
+# 3. hence, we can check if the number of the remaining people is odd or even
+#    to find the last vacant block or subtree entered by the last person.
 #    
-# 5. by conclusion, we can reduce the problem by the following rules (N >= 0, K >= 0): 
+# 4. by conclusion, we can reduce the problem by the following rules (N >= 0, K >= 0): 
 #    - bathroom_stalls(2N+2, 2K+2) = bathroom_stalls(N+1, K+1)
 #    - bathroom_stalls(2N+3, 2K+2) = bathroom_stalls(N+1, K+1)
 #    - bathroom_stalls(2N+2, 2K+3) = bathroom_stalls(N,   K+1)
