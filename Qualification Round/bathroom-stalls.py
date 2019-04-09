@@ -34,6 +34,10 @@
 def max_min(n):
     return ((n+1)//2, n//2)
 
+def bathroom_stalls3():  # simplified by bit operation of bathroom_stalls2
+    N, K = map(int, raw_input().strip().split())
+    return max_min((N-K) >> (K.bit_length()-1))
+
 def bathroom_stalls2():  # implemented by conclusion
     N, K = map(int, raw_input().strip().split())
     while K > 1:
