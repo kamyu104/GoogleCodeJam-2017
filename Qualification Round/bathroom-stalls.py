@@ -40,7 +40,7 @@ def bathroom_stalls3():  # simplified by bit operation of bathroom_stalls2
 
 def bathroom_stalls2():  # implemented by conclusion
     N, K = map(int, raw_input().strip().split())
-    while K > 1:
+    while K > 1:  # K.bit_length()-1 times
         if N % 2 == 0 and K % 2 == 1:  # it's like bit operation of N-K, could be simplified to bathroom_stalls3
             N -= 1
         N, K = N//2, K//2
