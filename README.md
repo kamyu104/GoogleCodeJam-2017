@@ -6,6 +6,9 @@ Python solutions of Google Code Jam 2017.
 * [Round 1A](https://github.com/kamyu104/GoogleCodeJam-2017#round-1a)
 * [Round 1B](https://github.com/kamyu104/GoogleCodeJam-2017#round-1b)
 * [Round 1C](https://github.com/kamyu104/GoogleCodeJam-2017#round-1c)
+* [Round 2](https://github.com/kamyu104/GoogleCodeJam-2017#round-2)
+* [Round 3](https://github.com/kamyu104/GoogleCodeJam-2017#round-3)
+* [World Finals](https://github.com/kamyu104/GoogleCodeJam-2017#world-finals)
 
 ## Qualification Round
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
@@ -35,3 +38,19 @@ Python solutions of Google Code Jam 2017.
 |A| [Ample Syrup](https://code.google.com/codejam/contest/3274486/dashboard#s=p0)| [Python](./Round%201C/ample-syrup.py)| _O(NlogK)_ | _O(K)_ | Easy | | Sort, Heap |
 |B| [Parenting Partnering](https://code.google.com/codejam/contest/3274486/dashboard#s=p1)| [Python](./Round%201C/parenting-partnering.py)| _O(NlogN)_ | _O(N)_ | Medium | | Sort, Greedy |
 |C| [Core Training](https://code.google.com/codejam/contest/3274486/dashboard#s=p2)| [Python](./Round%201C/core-training.py)| _O(N^2 * K)_ | _O(N)_ | Hard | | DP, Probability|
+
+## Round 2
+| # | Title | Solution | Time | Space | Difficulty | Tag | Note |
+|---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
+
+## Round 3
+| # | Title | Solution | Time | Space | Difficulty | Tag | Note |
+|---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
+
+## World Finals
+You can relive the magic of the 2017 Code Jam World Finals by watching the [Live Stream Recording](https://www.youtube.com/watch?v=Pq-wdw9TRoI) of the competition, problem explanations, interviews with Google and Code Jam engineers, and announcement of winners.
+
+| # | Title | Solution | Time | Space | Difficulty | Tag | Note |
+|---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
+|E| [Stack Management](https://code.google.com/codejam/contest/6314486/dashboard#s=p4)|||| Very Hard | | |
+|F| [Teleporters](https://code.google.com/codejam/contest/6314486/dashboard#s=p5)|||| Very Hard | | |
