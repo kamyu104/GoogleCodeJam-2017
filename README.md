@@ -42,15 +42,27 @@ Python solutions of Google Code Jam 2017.
 ## Round 2
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
+|A| [Fresh Chocolate](https://code.google.com/codejam/contest/5314486/dashboard#s=p0)| | | | | | |
+|B| [Roller Coaster Scheduling](https://code.google.com/codejam/contest/5314486/dashboard#s=p1)| | | | | | |
+|C| [Beaming With Joy](https://code.google.com/codejam/contest/5314486/dashboard#s=p2)| | | | | | |
+|D| [Shoot the Turrets](https://code.google.com/codejam/contest/5314486/dashboard#s=p3)| | | | | | |
 
 ## Round 3
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
+|A| [Googlements](https://code.google.com/codejam/contest/8304486/dashboard#s=p0)| | | | | | |
+|B| [Good News and Bad News](https://code.google.com/codejam/contest/8304486/dashboard#s=p1)| | | | | | |
+|C| [Mountain Tour](https://code.google.com/codejam/contest/8304486/dashboard#s=p2)| | | | | | |
+|D| [Slate Modern](https://code.google.com/codejam/contest/8304486/dashboard#s=p3)| | | | | | |
 
 ## World Finals
 You can relive the magic of the 2017 Code Jam World Finals by watching the [Live Stream Recording](https://www.youtube.com/watch?v=Pq-wdw9TRoI) of the competition, problem explanations, interviews with Google and Code Jam engineers, and announcement of winners.
 
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
+|A| [Dice Straight](https://code.google.com/codejam/contest/6314486/dashboard#s=p0)| | | | | | |
+|B| [Operation](https://code.google.com/codejam/contest/6314486/dashboard#s=p1)| | | | | | |
+|C| [Spanning Planning](https://code.google.com/codejam/contest/6314486/dashboard#s=p2)| | | | | | |
+|D| [Omnicircumnavigation](https://code.google.com/codejam/contest/6314486/dashboard#s=p3)| | | | | | |
 |E| [Stack Management](https://code.google.com/codejam/contest/6314486/dashboard#s=p4)|||| Very Hard | | |
 |F| [Teleporters](https://code.google.com/codejam/contest/6314486/dashboard#s=p5)|||| Very Hard | | |
