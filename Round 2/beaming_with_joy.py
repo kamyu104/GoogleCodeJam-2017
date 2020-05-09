@@ -97,7 +97,7 @@ def shoot(G, i, j, d):
         elif G[ni][nj] == '/':
             return dfs(G, ni, nj, -dj, -di, curr)
         elif G[ni][nj] == '\\':
-            return dfs(G, ni, nj, dj, di, curr)  # '\\'
+            return dfs(G, ni, nj, dj, di, curr)
         else:
             return None
 
