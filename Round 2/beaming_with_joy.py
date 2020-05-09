@@ -102,10 +102,10 @@ def shoot(G, i, j, d):
             return None
 
     if d == '-':
-        path_left, path_right = dfs(G, i, j, 0, -1, []), dfs(G, i, j, 0,  1, [])
+        path_left, path_right = dfs(G, i, j, 0, -1, []), dfs(G, i, j, 0, 1, [])
         return None if path_right is None or path_left is None else path_right+path_left
     elif d == '|':
-        path_up, path_down = dfs(G, i, j, -1, 0, []), dfs(G, i, j,  1, 0, [])
+        path_up, path_down = dfs(G, i, j, -1, 0, []), dfs(G, i, j, 1, 0, [])
         return None if path_up is None or path_down is None else path_up+path_down
 
 def beaming_with_joy():
