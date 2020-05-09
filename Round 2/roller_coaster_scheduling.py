@@ -4,7 +4,7 @@
 # https://codingcompetitions.withgoogle.com/codejam/round/0000000000201900/0000000000201845
 #
 # Time:  O(N + M)
-# Space: O(N + M)
+# Space: O(M)
 #
 
 from collections import defaultdict
