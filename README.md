@@ -1,4 +1,4 @@
-# [GoogleCodeJam 2017](https://codingcompetitions.withgoogle.com/codejam/archive/2017) ![Language](https://img.shields.io/badge/language-Python-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.md) ![Progress](https://img.shields.io/badge/progress-13%20%2F%2027-ff69b4.svg)
+# [GoogleCodeJam 2017](https://codingcompetitions.withgoogle.com/codejam/archive/2017) ![Language](https://img.shields.io/badge/language-Python-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.md) ![Progress](https://img.shields.io/badge/progress-14%20%2F%2027-ff69b4.svg)
 
 Python solutions of Google Code Jam 2017. Solution begins with `*` means it will get TLE in the largest data set (total computation amount > `10^8`, which is not friendly for Python to solve in 5 ~ 15 seconds). A `4-minute` timer is set for the small dataset and a `8-minute` timer is set for the large dataset this year.
 
@@ -45,7 +45,7 @@ Python solutions of Google Code Jam 2017. Solution begins with `*` means it will
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
 |A| [Fresh Chocolate](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201900/00000000002017f4)| [Python](./Round%202/fresh_chocolate.py) | _O(1)_ | _O(1)_ | Easy | | Math |
-|B| [Roller Coaster Scheduling](https://code.google.com/codejam/contest/5314486/dashboard#s=p1)| | | | | | |
+|B| [Roller Coaster Scheduling](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201900/0000000000201845)| [Python](./Round%202/roller_coaster_scheduling.py) | _O(M + N)_ | _O(M)_ | Easy | | Math |
 |C| [Beaming With Joy](https://code.google.com/codejam/contest/5314486/dashboard#s=p2)| | | | | | |
 |D| [Shoot the Turrets](https://code.google.com/codejam/contest/5314486/dashboard#s=p3)| | | | | | |
 
