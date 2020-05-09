@@ -111,29 +111,29 @@ def shoot(G, i, j, d):
 def beaming_with_joy():
     R, C = map(int, raw_input().strip().split())
     G = [list(raw_input().strip()) for _ in xrange(R)]
-    empties, lasers = {}, set()
+    empties, shooters = {}, set()
     for i, r in enumerate(G):
         for j, c in enumerate(r):
             if c == '.':
                 empties[(i, j)] = []
             elif c in "-|":
-                lasers.add((i, j))
+                shooters.add((i, j))
     cnf = CNFEncoder(TwoSat())
-    for l in lasers:
+    for s in shooters:
         choice_mask = 0
         for i, d in enumerate("-|", 1):
-            path = shoot(G, l[0], l[1], d)
+            path = shoot(G, s[0], s[1], d)
             if path is None:
                 continue
             choice_mask |= i
             for cell in path:
-                empties[cell].append((l, d))
+                empties[cell].append((s, d))
         if not choice_mask:
             return "IMPOSSIBLE"
         elif choice_mask == 1:
-            cnf.add(l, False, l, False)
+            cnf.add(s, False, s, False)
         elif choice_mask == 2:
-            cnf.add(l, True, l, True)
+            cnf.add(s, True, s, True)
     for choices in empties.itervalues():
         if not choices:
             return "IMPOSSIBLE"
