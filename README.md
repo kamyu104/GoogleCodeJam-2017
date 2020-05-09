@@ -46,7 +46,7 @@ Python solutions of Google Code Jam 2017. Solution begins with `*` means it will
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
 |A| [Fresh Chocolate](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201900/00000000002017f4)| [Python](./Round%202/fresh_chocolate.py) | _O(1)_ | _O(1)_ | Easy | | Math, Greedy |
 |B| [Roller Coaster Scheduling](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201900/0000000000201845)| [Python](./Round%202/roller_coaster_scheduling.py) | _O(M + N)_ | _O(M)_ | Easy | | Math, Greedy |
-|C| [Beaming With Joy](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201900/0000000000201876)| | _O(R * C)_ | _O(R * C)_ | Medium | | CNF, 2-SAT, SCC, Tarjan's Algorithm |
+|C| [Beaming With Joy](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201900/0000000000201876)| [Python](./Round%202/beaming_with_joy.py) | _O(R * C)_ | _O(R * C)_ | Medium | | CNF, 2-SAT, SCC, Tarjan's Algorithm |
 |D| [Shoot the Turrets](https://code.google.com/codejam/contest/5314486/dashboard#s=p3)| | | | | | |
 
 ## Round 3
