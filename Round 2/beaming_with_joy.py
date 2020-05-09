@@ -7,8 +7,8 @@
 # Space: O(R * C)
 #
 
-from collections import defaultdict, deque
 from sys import setrecursionlimit
+from collections import defaultdict
 
 # Template:
 # https://github.com/kamyu104/GoogleCodeJam-2018/blob/master/World%20Finals/swordmaster.py
