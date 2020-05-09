@@ -54,8 +54,8 @@ class TwoSat(object):
             if any(-v in scc_set for v in scc_set):
                 break
         else:
-            for c in sccs:
-                for v in c:
+            for scc in sccs:
+                for v in scc:
                     if v not in assignments and -v not in assignments:
                         assignments.add(v)
         return assignments
