@@ -111,13 +111,13 @@ def shoot(G, i, j, d):
 def beaming_with_joy():
     R, C = map(int, raw_input().strip().split())
     G = [list(raw_input().strip()) for _ in xrange(R)]
-    empties, shooters = {}, set()
+    shooters, empties = set(), {}
     for i, r in enumerate(G):
         for j, c in enumerate(r):
-            if c == '.':
-                empties[(i, j)] = []
-            elif c in "-|":
+            if c in "-|":
                 shooters.add((i, j))
+            elif c == '.':
+                empties[(i, j)] = []
     cnf = CNFEncoder(TwoSat())
     for s in shooters:
         choice_mask = 0
