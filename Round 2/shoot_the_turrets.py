@@ -18,6 +18,7 @@
 #
 
 from collections import Counter, defaultdict, deque
+from itertools import imap
 
 # Time:  O(E * sqrt(V))
 # Space: O(V)
@@ -233,7 +234,7 @@ def shoot_the_turrets():
     if not match:
         return 0
     result = find_alternate_matching(G, M, S, T, T_inv, match)
-    return "{}\n{}".format(len(result), "\n".join(map(lambda x: "{} {}".format(*x), result)))
+    return "{}\n{}".format(len(result), "\n".join(imap(lambda x: "%s %s" % (x[0], x[1]), result)))
 
 DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
 for case in xrange(input()):
