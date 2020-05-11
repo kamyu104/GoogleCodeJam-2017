@@ -181,7 +181,7 @@ def find_cycle(E, i, match):  # Time: O(T), Space: O(T)
             return start
     assert(False)
         
-def find_alternate_matching(G, M, S, T, T_inv, match):
+def find_alternating_matching(G, M, S, T, T_inv, match):
     H, V, H_T, V_T = group_T(G, T_inv)
     result = []
     pending, lookup = {}, {}
@@ -233,7 +233,7 @@ def shoot_the_turrets():
     match = find_max_bipartite_matching(G, M, S, T, T_inv)
     if not match:
         return 0
-    result = find_alternate_matching(G, M, S, T, T_inv, match)
+    result = find_alternating_matching(G, M, S, T, T_inv, match)
     return "{}\n{}".format(len(result), "\n".join(imap(lambda x: "%s %s" % (x[0], x[1]), result)))
 
 DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
