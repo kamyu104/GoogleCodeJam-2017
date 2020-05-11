@@ -3,11 +3,11 @@
 # Google Code Jam 2017 Round 2 - Problem D. Shoot the Turrets
 # https://codingcompetitions.withgoogle.com/codejam/round/0000000000201900/0000000000201901
 #
-# Time:  build G with BFSes:   O(S * R * C * (R + C))
+# Time:  build G with BFSes:   O(S * R * C)
 #        bipartite matching:   O((S * T) * sqrt(S + T))
-#        build G's with BFSes: O(S * R * C * (R + C) + T * S * (R + C))
+#        build G's with BFSes: O(S * R * C + T * S * (R + C))
 #        build Hs:             O(T * (S * T))
-#        total:                O(S * R * C * (R + C) + S * T^2)
+#        total:                O(S * R * C + S * T^2 + T * S * (R + C))
 # Space: build G with BFSes:   O(R * C)
 #        bipartite matching:   O(S + T)
 #        build G's with BFSes: O(R * C)
@@ -94,35 +94,46 @@ def bipartiteMatch(graph):
 
         for v in unmatched: recurse(v)
 
-def find_t(G, M, T, destroyed, r, c, dr, dc):
-    result = set()
-    nr, nc = r, c
-    while True:
-        nr, nc = nr+dr, nc+dc 
-        if not (0 <= nr < len(G) and 0 <= nc < len(G[0]) and
-                G[nr][nc] != "#"):
-            break
-        if G[nr][nc] == 'T' and T[nr, nc] not in destroyed:
-            result.add(T[nr, nc])
-    nr, nc = r, c
-    while True:
-        nr, nc = nr-dr, nc-dc 
-        if not (0 <= nr < len(G) and 0 <= nc < len(G[0]) and
-                G[nr][nc] != "#"):
-            break
-        if G[nr][nc] == 'T' and T[nr, nc] not in destroyed:
-            result.add(T[nr, nc])
-    return result
+def group_T(G, T_inv):  # Time: O(R * C), Space: O(R * C)
+    H_T, V_T = defaultdict(set), defaultdict(set)
+    H, V = [[0]*len(G[0]) for _ in xrange(len(G))], [[0]*len(G[0]) for _ in xrange(len(G))]
+    for i in xrange(len(G)):
+        H_T[len(H_T)+1] = set()
+        for j in xrange(len(G[0])):
+            if G[i][j] == '#':
+                H_T[len(H_T)+1] = set()
+                continue
+            H[i][j] = len(H_T)
+            if G[i][j] == 'T':
+                H_T[len(H_T)].add(T_inv[i, j])
+    for j in xrange(len(G[0])):
+        V_T[len(V_T)+1] = set()
+        for i in xrange(len(G)):
+            if G[i][j] == '#':
+                V_T[len(V_T)+1] = set()
+                continue
+            V[i][j] = len(V_T)
+            if G[i][j] == 'T':
+                V_T[len(V_T)].add(T_inv[i, j])
+    return H, V, H_T, V_T
 
-def bfs(G, M, T, destroyed, q, lookup):  # Time: O(R * C * (R + C)), Space: O(R * C)
+def remove_T(H, V, H_T, V_T, T, t):  # Time: O(1), Space: O(1)
+    r, c = T[t]
+    H_T[H[r][c]].remove(t)
+    V_T[V[r][c]].remove(t)
+
+def find_T(h, h_t, r, c):  # Time: O(1), Space: O(1)
+    return h_t[h[r][c]]
+
+def bfs(G, M, T_inv, H, V, H_T, V_T, q, lookup):  # Time: O(R * C), Space: O(R * C)
     result, pending = set(), deque()
     while q:
         r, c, step = q.popleft()
         if (r, c) in lookup and lookup[r, c] < step:
             continue
         can_move = True
-        for dr, dc in DIRECTIONS_2:
-            ts = find_t(G, M, T, destroyed, r, c, dr, dc)
+        for h, h_t in [(H, H_T), (V, V_T)]:
+            ts = find_T(h, h_t, r, c)
             if not ts:
                 continue
             can_move = False
@@ -134,7 +145,7 @@ def bfs(G, M, T, destroyed, q, lookup):  # Time: O(R * C * (R + C)), Space: O(R 
         if step+1 > M:
             continue
         step += 1
-        for dr, dc in DIRECTIONS_4:
+        for dr, dc in DIRECTIONS:
             nr, nc = r+dr, c+dc
             if not (0 <= nr < len(G) and 0 <= nc < len(G[0]) and
                     G[nr][nc] != "#" and
@@ -143,6 +154,19 @@ def bfs(G, M, T, destroyed, q, lookup):  # Time: O(R * C * (R + C)), Space: O(R 
             lookup[nr, nc] = step
             q.append((nr, nc, step))
     return result, pending
+
+def find_max_bipartite_matching(G, M, S, T, T_inv):
+    E = defaultdict(list)
+    for i, (r, c) in S.iteritems():  # Time: O(S * R * C)
+        H, V, H_T, V_T = group_T(G, T_inv)
+        pending, lookup = deque([(r, c, 0)]), {}
+        while pending:
+            ts, pending = bfs(G, M, T_inv, H, V, H_T, V_T, pending, lookup)
+            for t in ts:
+                E[t].append(i)
+                remove_T(H, V, H_T, V_T, T, t)
+    match, _, _ = bipartiteMatch(E)  # Time: O((S * T) * sqrt(S + T)), Space: O(S + T)
+    return match
 
 def find_cycle(E, i, match):  # Time: O(T), Space: O(T)
     if i in match:
@@ -154,23 +178,23 @@ def find_cycle(E, i, match):  # Time: O(T), Space: O(T)
             return start
     assert(False)
         
-def find_alternate_matching(G, M, S, T, match):
-    destroyed = set()
+def find_alternate_matching(G, M, S, T, T_inv, match):
+    H, V, H_T, V_T = group_T(G, T_inv)
     result = []
     pending, lookup = {}, {}
     for i in match.iterkeys():
         r, c = S[i]
         pending[i], lookup[i] = deque([(r, c, 0)]), {}
-    while match:  # Time: O(S * (R * C * (R + C) + T) + T * S * (R + C) + T)), each time add at least one valid edge, at most len(match)
+    while match:  # Time: O(S * (R * C + T) + T * S * (R + C) + T)), each time add at least one valid edge, at most len(match)
         E = defaultdict(list)
         T_set = set(match.itervalues())
-        for i in match.iterkeys():  # Time: O(S * (R * C * (R + C) + T) + T * S * (R + C))
+        for i in match.iterkeys():  # Time: O(S * (R * C + T) + T * S * (R + C))
             r, c = S[i]
-            ts, pending[i] = bfs(G, M, T, destroyed, pending[i], lookup[i])
-            for t in ts:  # Time: O(R * C * (R + C))
+            ts, pending[i] = bfs(G, M, T_inv, H, V, H_T, V_T, pending[i], lookup[i])
+            for t in ts:  # Time: O(R * C)
                 if t not in T_set:  # exchange with a valid edge
                     result.append((i, t))
-                    destroyed.add(t)
+                    remove_T(H, V, H_T, V_T, T, t)
                     match.pop(i)
                     break
                 E[i].append(-t)
@@ -184,7 +208,7 @@ def find_alternate_matching(G, M, S, T, match):
             while True:  # exchange with valid edges (forward edges) in the cycle
                 if i > 0:
                     result.append((i, -new_match[i]))
-                    destroyed.add(-new_match[i])
+                    remove_T(H, V, H_T, V_T, T, -new_match[i])
                     match.pop(i)
                 i = new_match[i]
                 if i == start:
@@ -193,30 +217,22 @@ def find_alternate_matching(G, M, S, T, match):
 
 def shoot_the_turrets():
     C, R, M = map(int, raw_input().strip().split())
-    G, S, T = [], {}, {}
+    G, S, T, T_inv = [], {}, {}, {}
     for r in xrange(R):
         G.append(raw_input().strip())
         for c in xrange(C):
             if G[r][c] == 'S':
                 S[len(S)+1] = (r, c)
             elif G[r][c] == 'T':
-                T[(r, c)] = len(T)+1
-    E = defaultdict(list)
-    for i, (r, c) in S.iteritems():  # Time: O(S * R * C)
-        destroyed = set()
-        pending, lookup = deque([(r, c, 0)]), {}
-        while pending:
-            ts, pending = bfs(G, M, T, destroyed, pending, lookup)
-            for t in ts:
-                E[t].append(i)
-                destroyed.add(t)
-    match, _, _ = bipartiteMatch(E)  # Time: O((S * T) * sqrt(S + T)), Space: O(S + T)
+                T[len(T)+1] = (r, c)
+                T_inv[(r, c)] = len(T_inv)+1
+
+    match = find_max_bipartite_matching(G, M, S, T, T_inv)
     if not match:
         return 0
-    result = find_alternate_matching(G, M, S, T, match)
+    result = find_alternate_matching(G, M, S, T, T_inv, match)
     return "{}\n{}".format(len(result), "\n".join(map(lambda x: "{} {}".format(*x), result)))
 
-DIRECTIONS_2 = [(1, 0), (0, 1)]
-DIRECTIONS_4 = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
 for case in xrange(input()):
     print 'Case #%d: %s' % (case+1, shoot_the_turrets())
