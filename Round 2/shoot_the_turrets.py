@@ -14,7 +14,7 @@
 #        build Hs:             O(S * T)
 #        total:                O(S * R * C)
 #
-# PyPy2 always pass in large dataset, but Python2 sometimes fails (the time is very tight)
+# PyPy2 always passes in large dataset, but Python2 sometimes fails (the time is very tight)
 #
 
 from collections import Counter, defaultdict, deque
