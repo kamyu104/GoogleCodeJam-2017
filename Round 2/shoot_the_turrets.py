@@ -205,10 +205,8 @@ def shoot_the_turrets():
     for i, (r, c) in S.iteritems():  # Time: O(S * R * C)
         destroyed = set()
         pending, lookup = deque([(r, c, 0)]), {}
-        while True:
+        while pending:
             ts, pending = bfs(G, M, T, destroyed, pending, lookup)
-            if not ts:
-                break
             for t in ts:
                 E[t].append(i)
                 destroyed.add(t)
