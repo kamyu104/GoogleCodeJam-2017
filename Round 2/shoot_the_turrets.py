@@ -160,8 +160,7 @@ def find_alternate_matching(G, M, S, T, match):
     pending, lookup = {}, {}
     for i in match.iterkeys():
         r, c = S[i]
-        pending[i] = deque([(r, c, 0)])
-        lookup[i] = {}
+        pending[i], lookup[i] = deque([(r, c, 0)]), {}
     while match:  # Time: O(S * (R * C * (R + C) + T) + T * S * (R + C) + T)), each time add at least one valid edge, at most len(match)
         E = defaultdict(list)
         T_set = set(match.itervalues())
