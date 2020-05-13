@@ -43,7 +43,7 @@ def backtracking(G):
     for i in reversed(xrange(len(G))):
         new_G.extend([i+1]*G[i])
     new_G.extend([0]*(len(G)-len(new_G)))
-    new_G = new_G[::-1]
+    new_G.reverse()
     if sum(new_G) > len(new_G):
         result, n = 1, len(G)
         for i in G:
