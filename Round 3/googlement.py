@@ -63,9 +63,9 @@ def backtracking(G, lookup, lookup2):
             break
     return 1+result
 
-def googlement():
+def googlements():
     G = map(int, list(raw_input().strip()))
     return backtracking(G, set(), set())
 
 for case in xrange(input()):
-    print 'Case #%d: %s' % (case+1, googlement())
+    print 'Case #%d: %s' % (case+1, googlements())
