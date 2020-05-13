@@ -17,7 +17,7 @@ def nCr(n, r):
     return c
 
 def nextPermutation(nums):
-    if len(nums) == 1:
+    if len(nums) <= 1:
         return False
     k, l = -1, 0
     for i in reversed(xrange(len(nums)-1)):
