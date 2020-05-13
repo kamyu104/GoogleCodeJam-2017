@@ -41,8 +41,8 @@ def backtracking(G):
     if cnt > len(G):
         return 1
     new_G = [0]*(len(G)-cnt)
-    for i in xrange(len(G)):
-        new_G.extend([i+1]*G[i])
+    for i, c in enumerate(G, 1):
+        new_G.extend([i]*c)
     if sum(new_G) > len(new_G):
         result, n = 1, len(G)
         for i in G:
