@@ -3,7 +3,7 @@
 # Google Code Jam 2017 Round 3 - Problem A. Googlements
 # https://codingcompetitions.withgoogle.com/codejam/round/0000000000201902/00000000002017f6
 #
-# Time:  O(L * H(L + 1, L) - 1) = O(L * (C((L + 1) + (L - 1), L) - 1)) = O(L * ((2L)!/L!/L!-1)) = O(9 * (18!/9!/9!-1)) = O(9 * 48619)
+# Time:  O(L * (H(L + 1, L) - 1)) = O(L * (C((L + 1) + (L - 1), L) - 1)) = O(L * ((2L)!/L!/L!-1)) = O(9 * (18!/9!/9!-1)) = O(9 * 48619)
 # Space: O(H(L + 1, L) - 1) = O(C((L + 1) + (L - 1), L) - 1) = O((2L)!/L!/L!-1) = O(18!/9!/9!-1) = O(48619)
 #
 
