@@ -52,8 +52,7 @@ def backtracking(G):
         return 1+result
     result = 0
     while True:
-        if G != new_G:
-            result += backtracking(new_G)
+        result += backtracking(new_G) if new_G != G else 0
         if not nextPermutation(new_G):
             break
     return 1+result
