@@ -48,9 +48,6 @@ def backtracking(G, lookup):
     new_G.extend([0]*(len(G)-len(new_G)))
     new_G = new_G[::-1]
     if sum(new_G) > len(new_G):
-        if tuple(new_G) in lookup:
-            return 0
-        lookup.add(tuple(new_G))
         result, n = 1, len(G)
         for i in G:
             result *= nCr(n, i)
