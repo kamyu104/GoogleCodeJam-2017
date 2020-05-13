@@ -4,7 +4,7 @@
 # https://codingcompetitions.withgoogle.com/codejam/round/0000000000201902/00000000002017f6
 #
 # Time:  O(L * (H(L + 1, L) - 1)) = O(L * (C((L + 1) + (L - 1), L) - 1)) = O(L * ((2L)!/L!/L!-1)) = O(9 * (18!/9!/9!-1)) = O(9 * 48619)
-# Space: O(L * (H(L + 1, L) - 1)) = O(L * (C((L + 1) + (L - 1), L) - 1)) = O(L * ((2L)!/L!/L!-1)) = O(9 * (18!/9!/9!-1)) = O(9 * 48619)
+# Space: O(L)
 #
 
 def nCr(n, r):
@@ -36,12 +36,9 @@ def nextPermutation(nums):
     nums[k+1:] = nums[:k:-1]
     return True
 
-def backtracking(G, lookup):
+def backtracking(G):
     if sum(G) > len(G):
         return 1
-    if tuple(G) in lookup:
-        return 0
-    lookup.add(tuple(G))
     new_G = []
     for i in reversed(xrange(len(G))):
         new_G.extend([i+1]*G[i])
@@ -55,14 +52,15 @@ def backtracking(G, lookup):
         return 1+result
     result = 0
     while True:
-        result += backtracking(new_G, lookup)
+        if G != new_G:
+            result += backtracking(new_G)
         if not nextPermutation(new_G):
             break
     return 1+result
 
 def googlements():
     G = map(int, list(raw_input().strip()))
-    return backtracking(G, set())
+    return backtracking(G)
 
 for case in xrange(input()):
     print 'Case #%d: %s' % (case+1, googlements())
