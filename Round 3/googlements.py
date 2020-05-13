@@ -36,21 +36,21 @@ def nextPermutation(nums):
     nums[k+1:] = nums[:k:-1]
     return True
 
-def backtracking(G, lookup, lookup2):
+def backtracking(G, lookup):
+    if sum(G) > len(G):
+        return 1
     if tuple(G) in lookup:
         return 0
     lookup.add(tuple(G))
-    if sum(G) > len(G):
-        return 1
     new_G = []
     for i in reversed(xrange(len(G))):
         new_G.extend([i+1]*G[i])
     new_G.extend([0]*(len(G)-len(new_G)))
     new_G = new_G[::-1]
     if sum(new_G) > len(new_G):
-        if tuple(new_G) in lookup2:
+        if tuple(new_G) in lookup:
             return 0
-        lookup2.add(tuple(new_G))
+        lookup.add(tuple(new_G))
         result, n = 1, len(G)
         for i in G:
             result *= nCr(n, i)
@@ -58,14 +58,14 @@ def backtracking(G, lookup, lookup2):
         return 1+result
     result = 0
     while True:
-        result += backtracking(new_G, lookup, lookup2)
+        result += backtracking(new_G, lookup)
         if not nextPermutation(new_G):
             break
     return 1+result
 
 def googlements():
     G = map(int, list(raw_input().strip()))
-    return backtracking(G, set(), set())
+    return backtracking(G, set())
 
 for case in xrange(input()):
     print 'Case #%d: %s' % (case+1, googlements())
