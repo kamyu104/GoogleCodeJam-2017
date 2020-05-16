@@ -3,7 +3,7 @@
 # Google Code Jam 2017 Round 3 - Problem B. Good News and Bad News
 # https://codingcompetitions.withgoogle.com/codejam/round/0000000000201902/0000000000201846
 #
-# Time:  O(P)
+# Time:  O(P^2)
 # Space: O(P)
 #
 
