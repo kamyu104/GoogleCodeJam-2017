@@ -11,19 +11,19 @@ from collections import defaultdict
 from itertools import imap
 
 def dfs(G, prev_id, u, stk, lookup, result):
-    for v, i in G[u]:
+    for i, v in G[u]:
         if ~i == prev_id:
             continue
         if v not in lookup:
             lookup[v] = len(lookup)+1
-            stk.append((v, i))
+            stk.append((i, v))
             dfs(G, i, v, stk, lookup, result)
             stk.pop()
             continue
         if lookup[v] >= lookup[u]:
             continue
         result[i] += 1
-        for t, j in reversed(stk):
+        for j, t in reversed(stk):
             if t == v:
                 break
             result[j] += 1
@@ -33,14 +33,14 @@ def good_news_and_bad_news():
     G = defaultdict(list)
     for i in xrange(P):
         A, B = map(int, raw_input().strip().split())
-        G[A].append((B, i))
-        G[B].append((A, ~i))
+        G[A].append((i, B))
+        G[B].append((~i, A))
     result, lookup, stk = defaultdict(int), {}, []
     for u in G.iterkeys():
         if u in lookup:
             continue
         lookup[u] = len(lookup)+1
-        stk.append((u, None))
+        stk.append((None, u))
         dfs(G, None, u, stk, lookup, result)
         stk.pop()
     for i in xrange(P):
