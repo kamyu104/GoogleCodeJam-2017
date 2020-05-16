@@ -44,9 +44,7 @@ def good_news_and_bad_news():
         stk.append((None, u))
         dfs(G, None, u, stk, lookup, result)
         stk.pop()
-    if any(x == 0 for x in result):
-        return "IMPOSSIBLE"
-    return " ".join(imap(str, result))
+    return " ".join(imap(str, result)) if all(x for x in result) else "IMPOSSIBLE"
 
 BASE = 3
 MAX_F = 1000
