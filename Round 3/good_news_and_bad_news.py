@@ -23,11 +23,11 @@ def dfs(G, prev_id, u, stk, lookup, result):
             continue
         if lookup[v] >= lookup[u]:
             continue
-        result[i] += 1
+        result[i if i >= 0 else ~i] += 1 if i >= 0 else -1
         for j, t in reversed(stk):
             if t == v:
                 break
-            result[j] += 1
+            result[j if j >= 0 else ~j] += 1 if j >= 0 else -1
 
 def good_news_and_bad_news():
     F, P = map(int, raw_input().strip().split())
@@ -36,7 +36,7 @@ def good_news_and_bad_news():
         A, B = map(int, raw_input().strip().split())
         G[A].append((i, B))
         G[B].append((~i, A))
-    result, lookup, stk = defaultdict(int), {}, []
+    result, lookup, stk = [0]*P, {}, []
     for u in G.iterkeys():
         if u in lookup:
             continue
@@ -44,11 +44,9 @@ def good_news_and_bad_news():
         stk.append((None, u))
         dfs(G, None, u, stk, lookup, result)
         stk.pop()
-    for i in xrange(P):
-        result[i] -= result[~i]
-        if not result[i]:
-            return "IMPOSSIBLE"
-    return " ".join(imap(str, (result[i] for i in xrange(P))))
+    if any(x == 0 for x in result):
+        return "IMPOSSIBLE"
+    return " ".join(imap(str, result))
 
 BASE = 3
 MAX_F = 1000
