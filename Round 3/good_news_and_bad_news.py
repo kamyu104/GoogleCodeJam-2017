@@ -7,6 +7,7 @@
 # Space: O(P)
 #
 
+from sys import setrecursionlimit
 from collections import defaultdict
 from itertools import imap
 
@@ -49,5 +50,8 @@ def good_news_and_bad_news():
             return "IMPOSSIBLE"
     return " ".join(imap(str, (result[i] for i in xrange(P))))
 
+BASE = 3
+MAX_F = 1000
+setrecursionlimit(BASE+(1+MAX_F))
 for case in xrange(input()):
     print 'Case #%d: %s' % (case+1, good_news_and_bad_news())
