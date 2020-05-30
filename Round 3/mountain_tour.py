@@ -47,8 +47,7 @@ def mountain_tour():
         prev_camps[E].append(i)
     result = sum(D for _, _, D in tours)
     next_camps, costs = [0]*(2*C), [0]*C
-    for i in xrange(C):
-        prev_a, prev_b = prev_camps[i]
+    for i, (prev_a, prev_b) in enumerate(prev_camps):
         (_, prev_a_l, prev_a_d), (_, prev_b_l, prev_b_d) = tours[prev_a], tours[prev_b]
         if not i:
             ta = min(time_to_leave(time_to_arrive(prev_a_l, prev_a_d), tours[2*i][1]) + tours[2*i+1][1],
