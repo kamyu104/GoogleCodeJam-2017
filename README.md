@@ -54,7 +54,7 @@ Python solutions of Google Code Jam 2017. Solution begins with `*` means it will
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
 |A| [Googlements](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201902/00000000002017f6)| [Python](./Round%203/googlements.py) | _O(L * (H(L + 1, L) - 1))_ | _O(L)_  | Easy | | Math, Backtracking, Pruning |
 |B| [Good News and Bad News](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201902/0000000000201846)|[Python](./Round%203/good_news_and_bad_news.py) | _O(P^2)_ | _O(P)_ | Medium | | Graph, DFS, Spanning Tree |
-|C| [Mountain Tour](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201902/0000000000201877)| [Python](./Round%203/mountain_tour.py) | _O(C * log*(C))_ | _O(C)_ | Medium | | Union Find |
+|C| [Mountain Tour](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201902/0000000000201877)| [Python](./Round%203/mountain_tour.py) | _O(C * log*(C))_ | _O(C)_ | Medium | | Union Find, Greedy |
 |D| [Slate Modern](https://code.google.com/codejam/contest/8304486/dashboard#s=p3)| | | | | | |
 
 ## World Finals
