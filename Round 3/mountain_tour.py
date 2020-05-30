@@ -73,7 +73,7 @@ def mountain_tour():
     for i in xrange(2*C):
         union_find.union_set(i, next_camps[i])
     for i in xrange(C):
-        if not costs[i]:  # first, union camps with 0 cost
+        if not costs[i]:  # first, union camps with 0 hr
             union_find.union_set(2*i, 2*i+1)
     # second, union camp1 if its tours are disjoint cycles, which has the smallest union costs in the rest of disjoint cycles
     # finally, union other camps which costs are all 24 hrs
