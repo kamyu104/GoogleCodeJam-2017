@@ -48,17 +48,16 @@ def mountain_tour():
     result = sum(D for _, _, D in tours)
     next_camps, costs = [0]*(2*C), [0]*C
     for i, (prev_a, prev_b) in enumerate(prev_camps):
-        (_, prev_a_l, prev_a_d), (_, prev_b_l, prev_b_d) = tours[prev_a], tours[prev_b]
         if not i:
-            ta = min(time_to_leave(time_to_arrive(prev_a_l, prev_a_d), tours[2*i][1]) + tours[2*i+1][1],
-                     time_to_leave(time_to_arrive(prev_b_l, prev_b_d), tours[2*i+1][1]) + tours[2*i][1])
-            tb = min(time_to_leave(time_to_arrive(prev_a_l, prev_a_d), tours[2*i+1][1]) + tours[2*i][1],
-                     time_to_leave(time_to_arrive(prev_b_l, prev_b_d), tours[2*i][1]) + tours[2*i+1][1])
+            ta = min(time_to_leave(time_to_arrive(tours[prev_a][1], tours[prev_a][2]), tours[2*i][1]) + tours[2*i+1][1],
+                     time_to_leave(time_to_arrive(tours[prev_b][1], tours[prev_b][2]), tours[2*i+1][1]) + tours[2*i][1])
+            tb = min(time_to_leave(time_to_arrive(tours[prev_a][1], tours[prev_a][2]), tours[2*i+1][1]) + tours[2*i][1],
+                     time_to_leave(time_to_arrive(tours[prev_b][1], tours[prev_b][2]), tours[2*i][1]) + tours[2*i+1][1])
         else:
-            ta = time_to_leave(time_to_arrive(prev_a_l, prev_a_d), tours[2*i][1]) + \
-                 time_to_leave(time_to_arrive(prev_b_l, prev_b_d), tours[2*i+1][1])
-            tb = time_to_leave(time_to_arrive(prev_a_l, prev_a_d), tours[2*i+1][1]) + \
-                 time_to_leave(time_to_arrive(prev_b_l, prev_b_d), tours[2*i][1])
+            ta = time_to_leave(time_to_arrive(tours[prev_a][1], tours[prev_a][2]), tours[2*i][1]) + \
+                 time_to_leave(time_to_arrive(tours[prev_b][1], tours[prev_b][2]), tours[2*i+1][1])
+            tb = time_to_leave(time_to_arrive(tours[prev_a][1], tours[prev_a][2]), tours[2*i+1][1]) + \
+                 time_to_leave(time_to_arrive(tours[prev_b][1], tours[prev_b][2]), tours[2*i][1])
             assert(abs(ta-tb) in (0, 24))
         if ta < tb:
             result += ta
