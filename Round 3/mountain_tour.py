@@ -60,6 +60,7 @@ def mountain_tour():
                  time_to_leave(time_to_arrive(prev_b_l, prev_b_d), tours[2*i+1][1])
             tb = time_to_leave(time_to_arrive(prev_a_l, prev_a_d), tours[2*i+1][1]) + \
                  time_to_leave(time_to_arrive(prev_b_l, prev_b_d), tours[2*i][1])
+            assert(abs(ta-tb) in (0, 24))
         if ta < tb:
             result += ta
             next_camps[prev_a], next_camps[prev_b] = 2*i, 2*i+1
@@ -73,7 +74,8 @@ def mountain_tour():
         union_find.union_set(i, next_camps[i])
     for i in xrange(C):
         if not costs[i]:
-            union_find.union_set(2*i, 2*i+1)        
+            union_find.union_set(2*i, 2*i+1)
+    # union camp1 first if needed which has the smallest cost, other needed costs are all 24 hrs
     return result + sum(costs[i] for i in xrange(C) if union_find.union_set(2*i, 2*i+1))
 
 for case in xrange(input()):
