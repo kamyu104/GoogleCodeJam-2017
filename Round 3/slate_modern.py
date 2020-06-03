@@ -26,7 +26,7 @@ def slate_modern():
     lookup_r, lookup_c = {x:i for i, x in enumerate(rows)}, {x:i for i, x in enumerate(cols)}
     dp = [[[float("inf")]*4 for _ in xrange(len(cols))] for _ in xrange(len(rows))]
     for r, c, b in fixeds:
-        dp[lookup_r[r]][lookup_c[c]] = [b-D*r-D*c, b+D*r-D*c, b-D*r+D*c, b+D*r+D*c]
+        dp[lookup_r[r]][lookup_c[c]] = [b+D*(-r-c), b+D*(r-c), b+D*(-r+c), b+D*(r+c)]
     for d1, direction1 in enumerate(DIRECTIONS):
         for i in direction1(xrange(len(rows))):
             for d2, direction2 in enumerate(DIRECTIONS):
@@ -45,21 +45,25 @@ def slate_modern():
             min_c, max_c = c0, min(c1-1, (b2-b0)/(2*D))
             min_anti, max_anti = r0+c0, min(r1+c1-2, (b3-b0)/(2*D))
             if (min_r <= max_r) and (min_c <= max_c) and (min_anti <= max_anti):
+                # assigned_b0 = min(b + D*(r0-r + c0-c)) = min(b+D*(-r-c)) + D*(min_r+min_c)
                 result = (result + f(b0+D*(min_r+min_c), max_r-min_r, max_c-min_c, max_anti-(min_r+min_c), D))%MOD
             min_r, max_r = max(r0, (b1-b0)/(2*D)+1), r1-1
             min_diag, max_diag = c0-(r1-1), min((b2-b1)/(2*D), (c1-1)-r0)
             min_c, max_c = c0, min(c1-1, (b3-b1)/(2*D))
             if (min_r <= max_r) and (min_c <= max_c) and (min_diag <= max_diag):
-                result = (result + f(b1+D*(min_c-max_r), max_r-min_r, max_c-min_c, max_diag-(min_c-max_r), D))%MOD
+                # assigned_b1 = min(b + D*(r-(r1-1) + c0-c)) = min(b+D*(r-c)) + D*(-max_r+min_c)
+                result = (result + f(b1+D*(-max_r+min_c), max_r-min_r, max_c-min_c, max_diag-(-max_r+min_c), D))%MOD
             min_c, max_c = max(c0, (b2-b0)/(2*D)+1), c1-1
             min_diag, max_diag = max(c0-(r1-1), (b2-b1)/(2*D)+1), (c1-1)-r0
             min_r, max_r = r0, min(r1-1, (b3-b2)/(2*D))
             if (min_r <= max_r) and (min_c <= max_c) and (min_diag <= max_diag):
+                # assigned_b2 = min(b + D*(r0-r + c-(c1-1))) = min(b+D*(-r+c)) + D*(min_r-max_c)
                 result = (result + f(b2+D*(min_r-max_c), max_r-min_r, max_c-min_c, -(min_r-max_c)-min_diag, D))%MOD
             min_anti, max_anti = max(r0+c0, (b3-b0)/(2*D)+1), r1+c1-2
             min_c, max_c = max(c0, (b3-b1)/(2*D)+1), c1-1
             min_r, max_r = max(r0, (b3-b2)/(2*D)+1), r1-1
             if (min_r <= max_r) and (min_c <= max_c) and (min_anti <= max_anti):
+                # assigned_b3 = min(b + D*(r-(r1-1)+ c-(c1-1))) = min(b+D*(r+c)) + D*(-max_r-max_c)
                 result = (result + f(b3+D*(-max_r-max_c), max_r-min_r, max_c-min_c, -(-max_r-max_c)-min_anti, D))%MOD
     return result
 
