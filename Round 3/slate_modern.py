@@ -13,15 +13,16 @@ def formula(a, b, c, k):
 def formula_from_i_to_j(a, b, c, i, j):
     return formula(a, b, c, j)-formula(a, b, c, i) if i < j else 0
 
-#  +-------c+1 --------+
-#  |b, ..., ..., b+D*c |
-#  |                   |
-#  |                   +
-# r+1                 /
-#  |               b+D*anti
-#  |                /anti
-#  |b+D*r          /
-#  +-------------+
+#  +-------- c+1 --------+
+#  |b . . . . . . . b+D*c|
+#  |.                .   |
+#  |.                .   |
+#  |.            b+D*anti+
+# r+1               .   /
+#  |.          b+D*anti/
+#  |.             .   /
+#  |b+D*r .  b+D*anti/
+#  +----------------+
 def f(b, r, c, anti, D):
     return formula_from_i_to_j((2*b+D*anti)*(anti+1), D-2*b, -D, max(0, (anti-r)+1), min(anti, c)+1)//2 + \
            formula_from_i_to_j(b*(r+1)+D*r*(r+1)//2, D*(r+1), 0, 0, min(c, anti-r)+1)
