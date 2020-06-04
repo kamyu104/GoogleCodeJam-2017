@@ -7,11 +7,11 @@
 # Space: O(N^2)
 #
 
-def formula(a, b, c, k):
-    return a*k + b*k*(k-1)//2 + c*k*(k-1)*(2*k-1)//6
+def triangle(b, anti, D):
+    return (b-D)*anti*(anti+1)//2 + D*anti*(anti+1)*(2*anti+1)//6
 
-def formula_from_i_to_j(a, b, c, i, j):
-    return formula(a, b, c, j)-formula(a, b, c, i) if i < j else 0
+def rectangle(b, r, c, D):
+    return (2*b+D*(r+c))*(r+1)*(c+1)//2
 
 #  +-------- c+1 --------+
 #  |b...............b+D*c|
@@ -24,8 +24,10 @@ def formula_from_i_to_j(a, b, c, i, j):
 #  |b+D*r....b+D*anti/
 #  +----------------+
 def f(b, r, c, anti, D):
-    return formula_from_i_to_j((2*b+D*anti)*(anti+1), D-2*b, -D, max(0, (anti-r)+1), min(anti, c)+1)//2 + \
-           formula_from_i_to_j(b*(r+1)+D*r*(r+1)//2, D*(r+1), 0, 0, min(c, anti-r)+1)
+    r, c, anti = min(r, anti), min(c, anti), min(anti, r+c)
+    if anti <= min(r, c):
+        return triangle(b, anti+1, D)
+    return rectangle(b, r, c, D) - triangle(b+D*(r+c), (r+c)-anti, -D)
 
 def slate_modern():
     R, C, N, D = map(int, raw_input().strip().split())
