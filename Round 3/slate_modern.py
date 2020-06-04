@@ -59,25 +59,25 @@ def slate_modern():
             min_anti, max_anti = r0+c0, min((r1-1)+(c1-1), (m3-m0)/(2*D))
             if (min_r <= max_r) and (min_c <= max_c) and (min_anti <= max_anti):
                 # b0 = min(b + D*(r0-r + c0-c)) = min(b+D*(-r-c)) + D*(min_r+min_c)
-                result = (result + f(m0+D*(min_r+min_c), max_r-min_r, max_c-min_c, max_anti-min_anti, D))%MOD
+                result = (result + f(m0+D*min_anti, max_r-min_r, max_c-min_c, max_anti-min_anti, D))%MOD
             min_r, max_r = max(r0, (m1-m0)/(2*D)+1), r1-1
             min_diag, max_diag = c0-(r1-1), min((c1-1)-r0, (m2-m1)/(2*D))
             min_c, max_c = c0, min(c1-1, (m3-m1)/(2*D))
             if (min_r <= max_r) and (min_c <= max_c) and (min_diag <= max_diag):
                 # b1 = min(b + D*(r-(r1-1) + c0-c)) = min(b+D*(r-c)) + D*(-max_r+min_c)
-                result = (result + f(m1+D*(-max_r+min_c), max_r-min_r, max_c-min_c, max_diag-min_diag, D))%MOD
+                result = (result + f(m1+D*min_diag, max_r-min_r, max_c-min_c, max_diag-min_diag, D))%MOD
             min_c, max_c = max(c0, (m2-m0)/(2*D)+1), c1-1
             min_diag, max_diag = max(c0-(r1-1), (m2-m1)/(2*D)+1), (c1-1)-r0
             min_r, max_r = r0, min(r1-1, (m3-m2)/(2*D))
             if (min_r <= max_r) and (min_c <= max_c) and (min_diag <= max_diag):
                 # b2 = min(b + D*(r0-r + c-(c1-1))) = min(b+D*(-r+c)) + D*(min_r-max_c)
-                result = (result + f(m2+D*(min_r-max_c), max_r-min_r, max_c-min_c, max_diag-min_diag, D))%MOD
+                result = (result + f(m2+D*(-max_diag), max_r-min_r, max_c-min_c, max_diag-min_diag, D))%MOD
             min_anti, max_anti = max(r0+c0, (m3-m0)/(2*D)+1), (r1-1)+(c1-1)
             min_c, max_c = max(c0, (m3-m1)/(2*D)+1), c1-1
             min_r, max_r = max(r0, (m3-m2)/(2*D)+1), r1-1
             if (min_r <= max_r) and (min_c <= max_c) and (min_anti <= max_anti):
                 # b3 = min(b + D*(r-(r1-1)+ c-(c1-1))) = min(b+D*(r+c)) + D*(-max_r-max_c)
-                result = (result + f(m3+D*(-max_r-max_c), max_r-min_r, max_c-min_c, max_anti-min_anti, D))%MOD
+                result = (result + f(m3+D*(-max_anti), max_r-min_r, max_c-min_c, max_anti-min_anti, D))%MOD
     return result
 
 DIRECTIONS = [lambda x: x, lambda x:reversed(x)]
