@@ -7,6 +7,8 @@
 # Space: O(N^2)
 #
 
+# divide submatrix into 4 parts, each part would be either a rectangle, triangle,
+# ladder-shaped, or rectangle excluding triangle, generalized as follows:
 #  +-------- c+1 --------+
 #  |b...............b+D*c|
 #  |.                   .|
