@@ -27,11 +27,7 @@ def f(b, r, c, anti, D):
     r, c, anti = min(r, anti), min(c, anti), min(anti, r+c)
     return rectangle(b, r, c, D) - triangle(b+D*(r+c), (r+c)-anti, -D)
 
-def slate_modern():
-    R, C, N, D = map(int, raw_input().strip().split())
-    fixeds = [map(int, raw_input().strip().split()) for i in xrange(N)]
-    if any(abs(b1-b2) > D*(abs(r1-r2)+abs(c1-c2)) for r1, c1, b1 in fixeds for r2, c2, b2 in fixeds):
-        return "IMPOSSIBLE"
+def coordinate_compression(R, C, D, fixeds):
     rows, cols = sorted(set([1, R+1]+[r for r, _, _ in fixeds])), sorted(set([1, C+1]+[c for _, c, _ in fixeds]))
     lookup_r, lookup_c = {x:i for i, x in enumerate(rows)}, {x:i for i, x in enumerate(cols)}
     dp = [[[float("inf")]*4 for _ in xrange(len(cols))] for _ in xrange(len(rows))]
@@ -45,12 +41,19 @@ def slate_modern():
                         dp[i][j][d2*2+d1] = min(dp[i][j][d2*2+d1], dp[i+2*d1-1][j][d2*2+d1])
                     if 0 <= j+2*d2-1 < len(cols):
                         dp[i][j][d2*2+d1] = min(dp[i][j][d2*2+d1], dp[i][j+2*d2-1][d2*2+d1])
-    new_dp = [[[dp[i][j][0], dp[i+1][j][1], dp[i][j+1][2], dp[i+1][j+1][3]] for j in xrange(len(cols)-1)] for i in xrange(len(rows)-1)]
+    return rows, cols, [[[dp[i][j][0], dp[i+1][j][1], dp[i][j+1][2], dp[i+1][j+1][3]] for j in xrange(len(cols)-1)] for i in xrange(len(rows)-1)]
+
+def slate_modern():
+    R, C, N, D = map(int, raw_input().strip().split())
+    fixeds = [map(int, raw_input().strip().split()) for i in xrange(N)]
+    if any(abs(b1-b2) > D*(abs(r1-r2)+abs(c1-c2)) for r1, c1, b1 in fixeds for r2, c2, b2 in fixeds):
+        return "IMPOSSIBLE"
+    rows, cols, min_manhattan_dist_dp = coordinate_compression(R, C, D, fixeds)
     result = 0
     for i in xrange(len(rows)-1):
         for j in xrange(len(cols)-1):
             r0, c0, r1, c1 = rows[i], cols[j], rows[i+1], cols[j+1]
-            b0, b1, b2, b3 = new_dp[i][j]
+            b0, b1, b2, b3 = min_manhattan_dist_dp[i][j]
             min_r, max_r = r0, min(r1-1, (b1-b0)/(2*D))
             min_c, max_c = c0, min(c1-1, (b2-b0)/(2*D))
             min_anti, max_anti = r0+c0, min((r1-1)+(c1-1), (b3-b0)/(2*D))
