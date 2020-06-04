@@ -20,7 +20,7 @@
 #  +----------------+
 def f(b, r, c, anti, D):
     def rectangle(b, r, c, D):
-        return (2*b+D*(r+c))*(r+1)*(c+1)//2
+        return b*(r+1)*(c+1) + D*(r+c)*(r+1)*(c+1)//2
 
     def triangle(b, anti, D):
         return (b-D)*anti*(anti+1)//2 + D*anti*(anti+1)*(2*anti+1)//6
