@@ -53,7 +53,7 @@ def slate_modern():
     for i in xrange(len(rows)-1):
         for j in xrange(len(cols)-1):
             r0, c0, r1, c1 = rows[i], cols[j], rows[i+1], cols[j+1]
-            m0, m1, m2, m3 = min_manhattan_dist_dp[i][j]
+            m0, m1, m2, m3 = min_manhattan_dist_dp[i][j]  # tl, bl, tr, br
             min_r, max_r = r0, min(r1-1, (m1-m0)/(2*D))
             min_c, max_c = c0, min(c1-1, (m2-m0)/(2*D))
             min_anti, max_anti = r0+c0, min((r1-1)+(c1-1), (m3-m0)/(2*D))
