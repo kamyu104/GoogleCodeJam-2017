@@ -72,7 +72,7 @@ def slate_modern():
             if (min_r <= max_r) and (min_c <= max_c) and (min_diag <= max_diag):
                 # assigned_b2 = min(b + D*(r0-r + c-(c1-1))) = min(b+D*(-r+c)) + D*(min_r-max_c)
                 result = (result + f(b2+D*(min_r-max_c), max_r-min_r, max_c-min_c, max_diag-min_diag, D))%MOD
-            min_anti, max_anti = max(r0+c0, (b3-b0)/(2*D)+1), r1+c1-2
+            min_anti, max_anti = max(r0+c0, (b3-b0)/(2*D)+1), (r1-1)+(c1-1)
             min_c, max_c = max(c0, (b3-b1)/(2*D)+1), c1-1
             min_r, max_r = max(r0, (b3-b2)/(2*D)+1), r1-1
             if (min_r <= max_r) and (min_c <= max_c) and (min_anti <= max_anti):
