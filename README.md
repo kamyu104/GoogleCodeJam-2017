@@ -55,7 +55,7 @@ Python solutions of Google Code Jam 2017. Solution begins with `*` means it will
 |A| [Googlements](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201902/00000000002017f6)| [Python](./Round%203/googlements.py) | _O(L * (H(L + 1, L) - 1))_ | _O(L)_  | Easy | | Math, Backtracking, Pruning |
 |B| [Good News and Bad News](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201902/0000000000201846)|[Python](./Round%203/good_news_and_bad_news.py) | _O(P^2)_ | _O(P)_ | Medium | | Graph, DFS, Spanning Tree |
 |C| [Mountain Tour](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201902/0000000000201877)| [Python](./Round%203/mountain_tour.py) | _O(C * log*(C))_ | _O(C)_ | Medium | | Union Find, Greedy |
-|D| [Slate Modern](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201902/0000000000201903)| [Python](./Round%203/slate_modern.py) | _O(N^2)_ | _O(N^2)_ | Hard | | Manhattan Distance, Coordinate Compression, DP, Arithmetic Sequence |
+|D| [Slate Modern](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201902/0000000000201903)| [Python](./Round%203/slate_modern.py) | _O(N^2)_ | _O(N^2)_ | Hard | | Manhattan Distance, Coordinate Compression, DP, Arithmetic Progression |
 
 ## World Finals
 You can relive the magic of the 2017 Code Jam World Finals by watching the [Live Stream Recording](https://www.youtube.com/watch?v=Pq-wdw9TRoI) of the competition, problem explanations, interviews with Google and Code Jam engineers, and announcement of winners.
