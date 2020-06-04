@@ -25,8 +25,6 @@ def rectangle(b, r, c, D):
 #  +----------------+
 def f(b, r, c, anti, D):
     r, c, anti = min(r, anti), min(c, anti), min(anti, r+c)
-    if anti <= min(r, c):
-        return triangle(b, anti+1, D)
     return rectangle(b, r, c, D) - triangle(b+D*(r+c), (r+c)-anti, -D)
 
 def slate_modern():
