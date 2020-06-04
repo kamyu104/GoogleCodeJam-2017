@@ -80,7 +80,7 @@ def slate_modern():
                 result = (result + f(m3+D*(-max_anti), max_r-min_r, max_c-min_c, max_anti-min_anti, D))%MOD
     return result
 
-DIRECTIONS = [lambda x: x, lambda x:reversed(x)]
 MOD = 10**9+7
+DIRECTIONS = [lambda x: x, lambda x:reversed(x)]
 for case in xrange(input()):
     print 'Case #%d: %s' % (case+1, slate_modern())
