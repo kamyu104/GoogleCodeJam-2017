@@ -7,12 +7,6 @@
 # Space: O(N^2)
 #
 
-def triangle(b, anti, D):
-    return (b-D)*anti*(anti+1)//2 + D*anti*(anti+1)*(2*anti+1)//6
-
-def rectangle(b, r, c, D):
-    return (2*b+D*(r+c))*(r+1)*(c+1)//2
-
 #  +-------- c+1 --------+
 #  |b...............b+D*c|
 #  |.                   .|
@@ -24,6 +18,12 @@ def rectangle(b, r, c, D):
 #  |b+D*r....b+D*anti/
 #  +----------------+
 def f(b, r, c, anti, D):
+    def triangle(b, anti, D):
+        return (b-D)*anti*(anti+1)//2 + D*anti*(anti+1)*(2*anti+1)//6
+
+    def rectangle(b, r, c, D):
+        return (2*b+D*(r+c))*(r+1)*(c+1)//2
+
     r, c, anti = min(r, anti), min(c, anti), min(anti, r+c)
     return rectangle(b, r, c, D) - triangle(b+D*(r+c), (r+c)-anti, -D)
 
