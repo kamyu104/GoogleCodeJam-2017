@@ -65,7 +65,7 @@ def dice_straight():
             nums_set.add(dij)
     nums = sorted(nums_set)
     bipartite_matching = BipartiteMatching({i:lookup[x] for i, x in enumerate(nums)})
-    result, right = 1, -1
+    result, right = 0, -1
     for left in xrange(len(nums)):
         if (len(nums)-1)-left+1 <= result:  # early return
             break
