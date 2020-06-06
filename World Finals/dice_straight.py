@@ -3,7 +3,7 @@
 # Google Code Jam 2017 Word Finals - Problem A. Dice Straight
 # https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/00000000002017fc
 #
-# Time:  O(N^2)
+# Time:  O(N^2), pass in PyPy2 but Python2
 # Space: O(N)
 #
 
