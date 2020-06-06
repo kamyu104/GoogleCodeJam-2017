@@ -39,7 +39,7 @@ class BipartiteMatching:
                 lookup.add(v)
                 stk.append(partial(postprocess, u, v, it))
                 stk.append(partial(divide, self.match_r[v]))
-                break
+                return
 
         def postprocess(u, v, it):
             if not ret[0]:
