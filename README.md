@@ -62,7 +62,7 @@ You can relive the magic of the 2017 Code Jam World Finals by watching the [Live
 
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
-|A| [Dice Straight](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/00000000002017fc)| [PyPy](./World%20Finals/dice_straight.py) | _O(N^2)_ | _O(N)_ | Medium | | Bipartite Matching, Ford-Fulkerson Algorithm |
+|A| [Dice Straight](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/00000000002017fc)| [PyPy](./World%20Finals/dice_straight.py) [PyPy](./World%20Finals/dice_straight2.py) | _O(N^2)_ | _O(N)_ | Medium | | Sliding Window, Bipartite Matching, Ford-Fulkerson Algorithm |
 |B| [Operation](https://code.google.com/codejam/contest/6314486/dashboard#s=p1)| | | | | | |
 |C| [Spanning Planning](https://code.google.com/codejam/contest/6314486/dashboard#s=p2)| | | | | | |
 |D| [Omnicircumnavigation](https://code.google.com/codejam/contest/6314486/dashboard#s=p3)| | | | | | |
