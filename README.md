@@ -1,4 +1,4 @@
-# [GoogleCodeJam 2017](https://codingcompetitions.withgoogle.com/codejam/archive/2017) ![Language](https://img.shields.io/badge/language-Python-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.md) ![Progress](https://img.shields.io/badge/progress-21%20%2F%2027-ff69b4.svg)
+# [GoogleCodeJam 2017](https://codingcompetitions.withgoogle.com/codejam/archive/2017) ![Language](https://img.shields.io/badge/language-Python-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.md) ![Progress](https://img.shields.io/badge/progress-22%20%2F%2027-ff69b4.svg)
 
 Python solutions of Google Code Jam 2017. Solution begins with `*` means it will get TLE in the largest data set (total computation amount > `10^8`, which is not friendly for Python to solve in 5 ~ 15 seconds). A `4-minute` timer is set for the small dataset and a `8-minute` timer is set for the large dataset this year.
 
@@ -62,7 +62,7 @@ You can relive the magic of the 2017 Code Jam World Finals by watching the [Live
 
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
-|A| [Dice Straight](https://code.google.com/codejam/contest/6314486/dashboard#s=p0)| | | | | | |
+|A| [Dice Straight](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/00000000002017fc)| [PyPy](./World%20Finals/dice_straight.py) | _O(N^2)_ | _O(N)_ | Medium | | Bipartite Matching, Ford-Fulkerson Algorithm |
 |B| [Operation](https://code.google.com/codejam/contest/6314486/dashboard#s=p1)| | | | | | |
 |C| [Spanning Planning](https://code.google.com/codejam/contest/6314486/dashboard#s=p2)| | | | | | |
 |D| [Omnicircumnavigation](https://code.google.com/codejam/contest/6314486/dashboard#s=p3)| | | | | | |

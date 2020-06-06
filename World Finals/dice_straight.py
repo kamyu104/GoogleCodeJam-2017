@@ -4,7 +4,7 @@
 # https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/00000000002017fc
 #
 # Time:  O(N^2)
-# Space: O(N^2)
+# Space: O(N)
 #
 
 from collections import defaultdict
@@ -25,7 +25,7 @@ class BipartiteMatching:
             if u not in self.graph:
                 return
             for v in self.graph[u]:
-                if v not in self.match_r:
+                if v not in self.match_r:  # early return
                     self.match[u] = v
                     self.match_r[v] = u
                     ret[0] = True
@@ -43,11 +43,11 @@ class BipartiteMatching:
             stk.append(partial(divide, self.match_r[v]))
 
         def postprocess(u, v, it):
-            if ret[0]:
-                self.match[u] = v
-                self.match_r[v] = u
-            else:
+            if not ret[0]:
                 stk.append(partial(conquer, u, it))
+                return
+            self.match[u] = v
+            self.match_r[v] = u
 
         ret, stk, lookup = [False], [], set()
         stk.append(partial(divide, u))
@@ -68,7 +68,7 @@ def dice_straight():
     bipartite_matching = BipartiteMatching({i:lookup[x] for i, x in enumerate(nums)})
     result, right = 1, -1
     for left in xrange(len(nums)):
-        if (len(nums)-1)-left+1 <= result:
+        if (len(nums)-1)-left+1 <= result:  # early return
             break
         right = max(right, left-1)
         while right+1 != len(nums) and (right == left-1 or nums[right]+1 == nums[right+1]) and \
