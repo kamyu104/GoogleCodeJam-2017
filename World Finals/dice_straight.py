@@ -10,7 +10,7 @@
 from collections import defaultdict
 
 # Ford-Fulkerson Algorithm
-# Time:  O(V^2)
+# Time:  O(V * E)
 # Space: O(V)
 from functools import partial
 
