@@ -65,12 +65,11 @@ def dice_straight():
             nums_set.add(dij)
     nums = sorted(nums_set)
     bipartite_matching = BipartiteMatching({i:graph[num] for i, num in enumerate(nums)})
-    bipartite_matching.augment(0)
-    result, left = 1, 0
-    for right in xrange(1, len(nums)):
+    result, left = 0, 0
+    for right in xrange(len(nums)):
         if (len(nums)-1)-left+1 <= result:  # early return
             break
-        is_straight = (nums[right-1]+1 == nums[right])
+        is_straight = (right == 0 or nums[right-1]+1 == nums[right])
         while not ((is_straight or left == right) and bipartite_matching.augment(right)):
             bipartite_matching.match_r.pop(bipartite_matching.match.pop(left))
             left += 1
