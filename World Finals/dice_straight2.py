@@ -57,13 +57,11 @@ class BipartiteMatching:
 def dice_straight():
     N = input()
     D = [map(int, raw_input().strip().split()) for _ in xrange(N)]
-    nums_set = set()
     graph = defaultdict(list)
     for i, dice in enumerate(D):
         for dij in dice:
             graph[dij].append(i)
-            nums_set.add(dij)
-    nums = sorted(nums_set)
+    nums = sorted(graph.iterkeys())
     bipartite_matching = BipartiteMatching(graph)
     result, left = 0, 0
     for right in xrange(len(nums)):
