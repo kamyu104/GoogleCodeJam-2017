@@ -64,16 +64,16 @@ def dice_straight():
             graph[dij].append(i)
             nums_set.add(dij)
     nums = sorted(nums_set)
-    bipartite_matching = BipartiteMatching({i:graph[num] for i, num in enumerate(nums)})
+    bipartite_matching = BipartiteMatching(graph)
     result, right = 0, -1
     for left in xrange(len(nums)):
         if (len(nums)-1)-left+1 <= result:  # early return
             break
         while right+1 != len(nums) and (right+1 == left or nums[right]+1 == nums[right+1]) and \
-              bipartite_matching.augment(right+1):
+              bipartite_matching.augment(nums[right+1]):
             right += 1
         result = max(result, right-left+1)
-        bipartite_matching.match_r.pop(bipartite_matching.match.pop(left))
+        bipartite_matching.match_r.pop(bipartite_matching.match.pop(nums[left]))
     return result
 
 for case in xrange(input()):
