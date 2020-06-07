@@ -61,8 +61,7 @@ def dice_straight():
     for i, dice in enumerate(D):
         for dij in dice:
             graph[dij].append(i)
-    nums = sorted(graph.iterkeys())
-    bipartite_matching = BipartiteMatching(graph)
+    nums, bipartite_matching = sorted(graph.iterkeys()), BipartiteMatching(graph)
     result, right = 0, -1
     for left in xrange(len(nums)):
         if (len(nums)-1)-left+1 <= result:  # early return
