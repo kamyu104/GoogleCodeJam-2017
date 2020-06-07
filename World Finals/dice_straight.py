@@ -58,13 +58,13 @@ def dice_straight():
     N = input()
     D = [map(int, raw_input().strip().split()) for _ in xrange(N)]
     nums_set = set()
-    lookup = defaultdict(list)
+    graph = defaultdict(list)
     for i, dice in enumerate(D):
         for dij in dice:
-            lookup[dij].append(i)
+            graph[dij].append(i)
             nums_set.add(dij)
     nums = sorted(nums_set)
-    bipartite_matching = BipartiteMatching({i:lookup[x] for i, x in enumerate(nums)})
+    bipartite_matching = BipartiteMatching({i:graph[num] for i, num in enumerate(nums)})
     result, right = 0, -1
     for left in xrange(len(nums)):
         if (len(nums)-1)-left+1 <= result:  # early return
