@@ -71,7 +71,7 @@ def dice_straight():
         if (len(nums)-1)-left+1 <= result:  # early return
             break
         is_straight = (nums[right-1]+1 == nums[right])
-        while not ((is_straight or left == right ) and bipartite_matching.augment(right)):
+        while not ((is_straight or left == right) and bipartite_matching.augment(right)):
             bipartite_matching.match_r.pop(bipartite_matching.match.pop(left))
             left += 1
         result = max(result, right-left+1)
