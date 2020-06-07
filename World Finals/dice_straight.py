@@ -69,7 +69,7 @@ def dice_straight():
     for left in xrange(len(nums)):
         if (len(nums)-1)-left+1 <= result:  # early return
             break
-        while right+1 != len(nums) and (right == left-1 or nums[right]+1 == nums[right+1]) and \
+        while right+1 != len(nums) and (right+1 == left or nums[right]+1 == nums[right+1]) and \
               bipartite_matching.augment(right+1):
             right += 1
         result = max(result, right-left+1)
