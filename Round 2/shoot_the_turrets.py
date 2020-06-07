@@ -25,6 +25,8 @@ from itertools import imap
 # Source code from http://code.activestate.com/recipes/123641-hopcroft-karp-bipartite-matching/
 # Hopcroft-Karp bipartite max-cardinality matching and max independent set
 # David Eppstein, UC Irvine, 27 Apr 2002
+from functools import partial
+
 def bipartiteMatch(graph):
     '''Find maximum cardinality matching of a bipartite graph (U,V,E).
     The input format is a dictionary mapping members of U to a list
@@ -95,7 +97,43 @@ def bipartiteMatch(graph):
                             return 1
             return 0
 
-        for v in unmatched: recurse(v)
+        def recurse_iter(v):
+            def divide(v):
+                if v not in preds:
+                    return
+                L = preds[v]
+                del preds[v]
+                for u in L :
+                    if u in pred and pred[u] is unmatched:  # early return
+                        del pred[u]
+                        matching[v] = u
+                        ret[0] = True
+                        return
+                stk.append(partial(conquer, v, iter(L)))
+
+            def conquer(v, it):
+                for u in it:
+                    if u not in pred:
+                        continue
+                    pu = pred[u]
+                    del pred[u]
+                    stk.append(partial(postprocess, v, u, it))
+                    stk.append(partial(divide, pu))
+                    return
+
+            def postprocess(v, u, it):
+                if not ret[0]:
+                    stk.append(partial(conquer, v, it))
+                    return
+                matching[v] = u
+
+            ret, stk = [False], []
+            stk.append(partial(divide, v))
+            while stk:
+                stk.pop()()
+            return ret[0]
+
+        for v in unmatched: recurse_iter(v)
 
 def group_T(G, T_inv):  # Time: O(R * C), Space: O(R * C)
     H_T, V_T = defaultdict(set), defaultdict(set)
