@@ -4,24 +4,30 @@
 # https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/000000000020187a
 #
 # Time:  O(R * N^3), R is the times of random, which may be up to 2*10^5
-# Space: O(N^2),     N is the empirical number of nodes, which could be 13
+# Space: O(N^2)    , N is the empirical number of nodes, which could be 13
 #
 
 from sys import float_info
 from random import randint, seed
 from operator import mul
 
-# https://integratedmlai.com/find-the-determinant-of-a-matrix-with-pure-python-without-numpy-or-scipy/
 def determinant(matrix):
     N = len(matrix)
+    sign = 1
     for d in xrange(N):  # turn laplacian matrix into upper triangle form by Gaussian elimination
-        if abs(matrix[d][d]) < float_info.epsilon:
-            matrix[d][d] = float_info.epsilon
+        for i in xrange(d, N):
+            if abs(matrix[i][d]) > float_info.epsilon:
+                break
+        else:
+            break
+        if i != d:
+            matrix[i], matrix[d] = matrix[d], matrix[i]
+            sign *= -1  # interchange
         for i in xrange(d+1, N): 
             scalar = matrix[i][d]/matrix[d][d]
             for j in xrange(N):
                 matrix[i][j] -= scalar*matrix[d][j]
-    return int(round(reduce(mul, (matrix[d][d] for d in xrange(N)))))
+    return int(round(sign*reduce(mul, (matrix[d][d] for d in xrange(N)))))
 
 def minor(matrix, r, c):
     return determinant([[v for j, v in enumerate(row) if j+1 != c] 
