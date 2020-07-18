@@ -37,10 +37,7 @@ def spanning_planning():
     K = input()
     if K <= MAX_N:
         N = K
-        adj = [[0]*N for _ in xrange(N)]
-        for i in xrange(N):
-            for j in xrange(N):
-                adj[i][j] = int(abs(i-j) in (1, N-1))
+        adj = [[int(abs(i-j) in (1, N-1)) for j in xrange(N)] for i in xrange(N)]
     else:
         N = EXP_K
         adj = [[0]*N for _ in xrange(N)]
