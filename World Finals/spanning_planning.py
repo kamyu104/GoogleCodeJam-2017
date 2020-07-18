@@ -58,9 +58,6 @@ def spanning_planning():
     else:
         N = EXP_N
         adj = [[0]*N for _ in xrange(N)]
-        for i in xrange(N):
-            for j in xrange(i+1, N):
-                adj[i][j] = adj[j][i] = int(randint(1, P_INV) == 1)
         while True:
             number_of_spanning_tree = kirchhoff_matrix_tree_theorem(adj)
             if number_of_spanning_tree > K:
@@ -82,6 +79,5 @@ def spanning_planning():
 seed(0)
 MAX_N = 22
 EXP_N = 13
-P_INV = 4
 for case in xrange(input()):
     print 'Case #%d: %s' % (case+1, spanning_planning())
