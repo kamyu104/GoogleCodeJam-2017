@@ -20,17 +20,17 @@ def operation():
             v *= -1
             op = '+'
         if op == '+':
-            if v >= 0:
+            if v > 0:
                 adds.append(v)
-            else:
-                subs.append(v)
+            elif v < 0:
+                subs.append(-v)
         elif op == '*':
             if v > 0:
                 mulps.append(v)
-            elif v == 0:
-                mulzs.append(0)
-            if v < 0:
+            elif v < 0:
                 mulns.append(v)
+            else:
+                mulzs.append(0)
         else:
             if v > 0:
                 divps.append(v)
@@ -40,25 +40,25 @@ def operation():
     if adds:
         ops.append(('+', sum(adds)))
     if subs:
-        ops.append(('-', -sum(subs)))
+        ops.append(('-', sum(subs)))
     if mulps:
-        ops.append(('*', reduce(lambda x,y: x*y, mulps)))
+        ops.append(('*', reduce(lambda x, y: x*y, mulps)))
     if mulzs:
         ops.append(('*', 0))
     if divps:
-        ops.append(('/', reduce(lambda x,y: x*y, divps)))
+        ops.append(('/', reduce(lambda x, y: x*y, divps)))
     for _ in xrange(min(len(mulns), 2)):
         i = mulns.index(max(mulns))
         mulns[-1], mulns[i] = mulns[i], mulns[-1]
         ops.append(('*', mulns.pop()))
     if mulns:
-        ops.append(('*', reduce(lambda x,y: x*y, mulns)))
+        ops.append(('*', reduce(lambda x, y: x*y, mulns)))
     for _ in xrange(min(len(divns), 2)):
         i = divns.index(max(divns))
         divns[-1], divns[i] = divns[i], divns[-1]
         ops.append(('/', divns.pop()))
     if divns:
-        ops.append(('/', reduce(lambda x,y: x*y, divns)))
+        ops.append(('/', reduce(lambda x, y: x*y, divns)))
     max_dp, min_dp = [float("-inf") for i in xrange(2**len(ops))], [float("inf") for i in xrange(2**len(ops))]
     max_dp[0], min_dp[0] = Fraction(S), Fraction(S)
     for i in xrange(1, len(max_dp)):
