@@ -7,26 +7,20 @@
 # Space: O(N^2),     N is the empirical number of nodes, which could be 13
 #
 
+from sys import float_info
 from random import randint, seed
 from operator import mul
 
+# https://integratedmlai.com/find-the-determinant-of-a-matrix-with-pure-python-without-numpy-or-scipy/
 def determinant(matrix):
     N = len(matrix)
-    sign = 1
     for d in xrange(N):  # turn laplacian matrix into upper triangle form by Gaussian elimination
-        for i in xrange(d, N):
-            if matrix[i][d] > EPS:
-                break
-        else:
-            break
-        if i != d:
-            matrix[i], matrix[d] = matrix[d], matrix[i]
-            sign *= -1  # interchange
+        matrix[d][d] = max(matrix[d][d], float_info.epsilon)
         for i in xrange(d+1, N): 
             scalar = matrix[i][d]/matrix[d][d]
             for j in xrange(N):
                 matrix[i][j] -= scalar*matrix[d][j]
-    return int(round(sign*reduce(mul, (matrix[d][d] for d in xrange(N)))))
+    return int(round(reduce(mul, (matrix[d][d] for d in xrange(N)))))
 
 def minor(matrix, r, c):
     return determinant([[v for j, v in enumerate(row) if j+1 != c] 
@@ -79,7 +73,6 @@ def spanning_planning():
     return "%s\n%s" % (N, "\n".join("".join(map(str, row)) for row in adj))
 
 seed(0)
-EPS = 0.1
 MAX_N = 22
 EXP_N = 13
 P_INV = 4
