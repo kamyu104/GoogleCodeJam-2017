@@ -20,18 +20,23 @@ def kirchhoff_matrix_tree_theorem(adj):
                 continue
             laplacian_matrix[i][i] += 1
             laplacian_matrix[i][j] -= adj[i][j]
+        if laplacian_matrix[i][i] == 0.0:
+            return 0
+    sign = 1
     for d in xrange(N-1):  # make laplacian matrix upper triangle form
         for i in xrange(d, N-1):
             if laplacian_matrix[i][d] > EPS:
                 break
         else:
             break
-        laplacian_matrix[i], laplacian_matrix[d] = laplacian_matrix[d], laplacian_matrix[i]
+        if i != d:
+            laplacian_matrix[i], laplacian_matrix[d] = laplacian_matrix[d], laplacian_matrix[i]
+            sign *= -1
         for i in xrange(d+1, N-1): 
             coef = -laplacian_matrix[i][d]/laplacian_matrix[d][d]
             for j in xrange(N-1):
                 laplacian_matrix[i][j] += coef*laplacian_matrix[d][j]
-    return int(round(reduce(mul, (laplacian_matrix[d][d] for d in xrange(N-1)))))
+    return int(round(sign*reduce(mul, (laplacian_matrix[d][d] for d in xrange(N-1)))))
 
 def spanning_planning():
     K = input()
@@ -41,6 +46,9 @@ def spanning_planning():
     else:
         N = EXP_K
         adj = [[0]*N for _ in xrange(N)]
+        for i in xrange(N):
+            for j in xrange(i+1, N):
+                adj[i][j] = adj[j][i] = int(randint(1, P_INV) == 1)
         while True:
             number_of_spanning_tree = kirchhoff_matrix_tree_theorem(adj)
             if number_of_spanning_tree > K:
@@ -63,5 +71,6 @@ seed(0)
 EPS = 0.1
 MAX_N = 22
 EXP_K = 13
+P_INV = 4
 for case in xrange(input()):
     print 'Case #%d: %s' % (case+1, spanning_planning())
