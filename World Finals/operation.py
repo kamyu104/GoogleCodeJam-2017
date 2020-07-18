@@ -46,7 +46,7 @@ def operation():
     if mulzs:
         ops.append(('*', 0))
     if divps:
-        ops.append(('/', reduce(lambda x,y: x*y,divps)))
+        ops.append(('/', reduce(lambda x,y: x*y, divps)))
     for _ in xrange(min(len(mulns), 2)):
         i = mulns.index(max(mulns))
         mulns[-1], mulns[i] = mulns[i], mulns[-1]
