@@ -15,7 +15,8 @@ from operator import mul
 def determinant(matrix):
     N = len(matrix)
     for d in xrange(N):  # turn laplacian matrix into upper triangle form by Gaussian elimination
-        matrix[d][d] = max(matrix[d][d], float_info.epsilon)
+        if abs(matrix[d][d]) < float_info.epsilon:
+            matrix[d][d] = float_info.epsilon
         for i in xrange(d+1, N): 
             scalar = matrix[i][d]/matrix[d][d]
             for j in xrange(N):
