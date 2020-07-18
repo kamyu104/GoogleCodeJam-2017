@@ -3,7 +3,7 @@
 # Google Code Jam 2017 Word Finals - Problem C. Spanning Planning
 # https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/000000000020187a
 #
-# Time:  O(R * 22^3), R is the times of random, R may be up to 10^6, TLE in both Python2 / PyPy2, but pass in C++
+# Time:  O(R * 22^3), R is the times of random, R may be up to 10^6
 # Space: O(22^2)
 #
 
@@ -35,13 +35,15 @@ def kirchhoff_matrix_tree_theorem(adj):
 
 def spanning_planning():
     K = input()
-    N = min(K, MAX_N)
-    adj = [[0]*N for _ in xrange(N)]
     if K <= MAX_N:
+        N = K
+        adj = [[0]*N for _ in xrange(N)]
         for i in xrange(N):
             for j in xrange(N):
-                adj[i][j] = int(abs(i-j) == 1 or abs(i-j) == N-1)
+                adj[i][j] = int(abs(i-j) in (1, N-1))
     else:
+        N = EXP_K
+        adj = [[0]*N for _ in xrange(N)]
         while True:
             number_of_spanning_tree = kirchhoff_matrix_tree_theorem(adj)
             if number_of_spanning_tree > K:
@@ -63,5 +65,6 @@ def spanning_planning():
 seed(0)
 EPS = 0.1
 MAX_N = 22
+EXP_K = 13
 for case in xrange(input()):
     print 'Case #%d: %s' % (case+1, spanning_planning())
