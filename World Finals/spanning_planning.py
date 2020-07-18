@@ -1,7 +1,7 @@
 # Copyright (c) 2020 kamyu. All rights reserved.
 #
-# Google Code Jam 2017 Word Finals - Problem B. Operation
-# https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/000000000020184a
+# Google Code Jam 2017 Word Finals - Problem C. Spanning Planning
+# https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/000000000020187a
 #
 # Time:  O(R * 22^3), R is the times of random, R may be up to 10^6, TLE in both Python2 / PyPy2, but pass in C++
 # Space: O(22^2)
