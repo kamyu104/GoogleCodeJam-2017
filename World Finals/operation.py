@@ -7,7 +7,7 @@
 # Space: O(2^11 * (N * D))
 #
 
-from fractions import gcd, Fraction
+from fractions import Fraction
 from operator import add, sub, mul, div
 
 def operation():
