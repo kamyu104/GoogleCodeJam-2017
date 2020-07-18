@@ -48,7 +48,7 @@ def kirchhoff_matrix_tree_theorem(adj):
             laplacian_matrix[i][j] -= adj[i][j]
         if laplacian_matrix[i][i] == 0.0:
             return 0
-    return cofactor(laplacian_matrix, 1, 1)  # any cofactor i, j where 1 <= i <= N and 1 <= j <= N  is fine
+    return cofactor(laplacian_matrix, 1, 1)  # any cofactor i, j where 1 <= i <= N and 1 <= j <= N is fine
 
 def spanning_planning():
     K = input()
