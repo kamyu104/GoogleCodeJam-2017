@@ -14,9 +14,9 @@ from operator import mul
 def determinant(matrix):
     N = len(matrix)
     sign = 1
-    for d in xrange(N):  # turn laplacian matrix into upper triangle form by Gaussian elimination
+    for d in xrange(N):  # turn the matrix into upper triangle form by Gaussian elimination
         for i in xrange(d, N):
-            if abs(matrix[i][d]) > float_info.epsilon:
+            if abs(matrix[i][d]) > float_info.epsilon:  # use double to approximate the determinant rather than Fraction which is too slow in Python2 / PyPy2
                 break
         else:
             break
@@ -24,7 +24,7 @@ def determinant(matrix):
             matrix[i], matrix[d] = matrix[d], matrix[i]
             sign *= -1  # interchange
         for i in xrange(d+1, N): 
-            scalar = matrix[i][d]/matrix[d][d]
+            scalar = 1.0*matrix[i][d]/matrix[d][d]
             for j in xrange(N):
                 matrix[i][j] -= scalar*matrix[d][j]
     return int(round(sign*reduce(mul, (matrix[d][d] for d in xrange(N)))))
@@ -39,14 +39,14 @@ def cofactor(matrix, r, c):
 # https://www.geeksforgeeks.org/total-number-spanning-trees-graph/
 def kirchhoff_matrix_tree_theorem(adj):
     N = len(adj)
-    laplacian_matrix = [[0.0]*N for _ in xrange(N)]
+    laplacian_matrix = [[0]*N for _ in xrange(N)]
     for i in xrange(N):
         for j in xrange(N):
             if not adj[i][j]:
                 continue
             laplacian_matrix[i][i] += 1
             laplacian_matrix[i][j] -= adj[i][j]
-        if laplacian_matrix[i][i] == 0.0:
+        if laplacian_matrix[i][i] == 0:
             return 0
     return cofactor(laplacian_matrix, 1, 1)  # every cofactor i, j where 1 <= i <= N and 1 <= j <= N is the same
 
