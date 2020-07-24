@@ -4,7 +4,7 @@
 # https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/000000000020190a
 #
 # Time:  O(N^2), pass in PyPy2 but Python2
-# Space: O(1)
+# Space: O(N)
 #
 
 def inner_product(a, b):
