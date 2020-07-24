@@ -45,7 +45,7 @@ def omnicircumnavigation():
             elif coplanar > 0:  # the boundary doesn't exist, thus the points are not inside the semisphere
                 break
         else:
-            return "NO"  # points are inside the semisphere
+            return "NO"  # all points are inside the semisphere
     return "YES"
 
 for case in xrange(input()):
