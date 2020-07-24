@@ -34,7 +34,7 @@ def omnicircumnavigation():
             # if the points are inside the semi-sphere,
             # there should exist two plane boundaries and the angle between them is less than 180 degrees and all points are inside them
             if k == -1 or inner_product(outer_product(p[i], p[k]), p[j]) > 0:
-                k = j  # find one of the boundary point
+                k = j  # find the leftmost point where the left plane boundary is
         for j in xrange(len(p)):
             if j in (i, k):
                 continue
