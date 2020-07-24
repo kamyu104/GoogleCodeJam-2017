@@ -26,14 +26,14 @@ def omnicircumnavigation():
         else:
             p.append(points[i])
     for i in xrange(len(p)):
-        k = None
+        k = -1
         for j in xrange(len(p)):
             if j in (i, k):
                 continue
             # rotate a plane with [(0, 0), p[i]] as the axis to cover each point,
             # if the points are inside the semi-sphere,
             # there should exist two plane boundaries and the angle between them is less 180 degrees and all points are inside them
-            if k is None or inner_product(outer_product(p[i], p[k]), p[j]) > 0:
+            if k == -1 or inner_product(outer_product(p[i], p[k]), p[j]) > 0:
                 k = j  # find one of the boundary point
         for j in xrange(len(p)):
             if j in (i, k):
