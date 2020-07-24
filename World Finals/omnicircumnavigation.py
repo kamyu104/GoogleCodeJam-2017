@@ -42,7 +42,7 @@ def omnicircumnavigation():
             if coplanar == 0:  # coplanar
                 if inner_product(outer_product(p[i], p[k]), outer_product(p[i], p[j])) < 0:  # angle between plane [(0, 0), p[i], p[k]] and plane [(0, 0), p[i], p[k]] is 180 degrees
                     break
-            elif coplanar > 0:  # the bounary doesn't exist, thus the points are not inside the semisphere
+            elif coplanar > 0:  # the boundary doesn't exist, thus the points are not inside the semisphere
                 break
         else:
             return "NO"  # points are inside the semisphere
