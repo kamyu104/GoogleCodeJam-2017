@@ -21,7 +21,7 @@ def omnicircumnavigation():
             if outer_product(points[i], points[j]) == (0, 0, 0):  # colinear
                 if inner_product(points[i], points[j]) < 0:  # angle between line [(0, 0), points[i]] and line [(0, 0), points[j]] is 180 degrees
                     return "YES"
-                else:
+                else:  # duplicated
                     break
         else:
             p.append(points[i])
