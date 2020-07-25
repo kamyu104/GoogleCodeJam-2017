@@ -29,9 +29,9 @@ def preprocess(stks):  # Time: O((N * C) * logN), Space: O(N)
             s.append(suite)
 
 def dfs(edges, source, targets):  # Time: O(N), Space: O(N)
-    stk, lookup = [source], set([source])
-    while stk:
-        u = stk.pop()
+    s, lookup = [source], set([source])
+    while s:
+        u = s.pop()
         if u in targets:
             return True
         if u not in edges:
@@ -40,7 +40,7 @@ def dfs(edges, source, targets):  # Time: O(N), Space: O(N)
             if v in lookup:
                 continue
             lookup.add(v)
-            stk.append(v)
+            s.append(v)
     return False
 
 def stack_management():
