@@ -1,4 +1,4 @@
-# [GoogleCodeJam 2017](https://codingcompetitions.withgoogle.com/codejam/archive/2017) ![Language](https://img.shields.io/badge/language-Python-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.md) ![Progress](https://img.shields.io/badge/progress-25%20%2F%2027-ff69b4.svg)
+# [GoogleCodeJam 2017](https://codingcompetitions.withgoogle.com/codejam/archive/2017) ![Language](https://img.shields.io/badge/language-Python-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.md) ![Progress](https://img.shields.io/badge/progress-26%20%2F%2027-ff69b4.svg)
 
 Python solutions of Google Code Jam 2017. Solution begins with `*` means it will get TLE in the largest data set (total computation amount > `10^8`, which is not friendly for Python to solve in 5 ~ 15 seconds). A `4-minute` timer is set for the small dataset and a `8-minute` timer is set for the large dataset this year.
 
@@ -66,5 +66,5 @@ You can relive the magic of the 2017 Code Jam World Finals by watching the [Live
 |B| [Operation](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/000000000020184a)| [Python](./World%20Finals/operation.py) | _O(11*2^11 * (N * D^2))_ | _O(2^11 * (N * D))_ | Medium | | Grouping, Greedy, DP |
 |C| [Spanning Planning](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/000000000020187a)| [PyPy](./World%20Finals/spanning_planning.py) | _O(R * N^3)_ | _O(N^2)_ | Hard | | Cycle, Spanning Tree, Kirchhoff Matrix Tree Theorem, Determinant, Gaussian Elimination |
 |D| [Omnicircumnavigation](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/000000000020190a)| [PyPy](./World%20Finals/omnicircumnavigation.py) | _O(N^2)_ | _O(N)_ | Easy | | Geometry, Plane, Vector, Inner Product, Outer Product |
-|E| [Stack Management](https://code.google.com/codejam/contest/6314486/dashboard#s=p4)|||| Very Hard | | |
+|E| [Stack Management](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/00000000002017fd)| _O((N * C) * logN)_ | _O(N * C)_ || Very Hard | | Preprocess, Stack, DFS |
 |F| [Teleporters](https://code.google.com/codejam/contest/6314486/dashboard#s=p5)|||| Very Hard | | |
