@@ -68,9 +68,9 @@ def stack_management():
     else:
         return "IMPOSSIBLE"  # no empty stack
 
-    vertices = {stk[0][1] for stk in stks if stk and stk[0][0] == suite_to_values[stk[0][1]][-1]}
+    vertices = {stk[0][1] for stk in stks if stk and stk[0][0] == suite_to_values[stk[0][1]][-1]}  # Time: O(N)
     sources, targets, edges = [], set(), defaultdict(list)
-    for i, stk in enumerate(stks):  # Time: O(R * C)
+    for i, stk in enumerate(stks):  # Time: O(N * C)
         if not stk:
             continue
         ace_value, ace_suite = stk[0]
