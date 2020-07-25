@@ -68,6 +68,7 @@ def stack_management():
     else:
         return "IMPOSSIBLE"  # no empty stack
 
+    vertices = {stk[0][1] for stk in stks if stk and stk[0][0] == suite_to_values[stk[0][1]][-1]}
     sources, targets, edges = [], set(), defaultdict(list)
     for i, stk in enumerate(stks):  # Time: O(R * C)
         if not stk:
@@ -82,7 +83,7 @@ def stack_management():
                 continue
             if value == suite_to_values[suite][-1]:
                 targets.add(ace_suite)
-            if len(suite_to_values[suite]) >= 2 and value == suite_to_values[suite][-2]:
+            if suite in vertices and len(suite_to_values[suite]) >= 2 and value == suite_to_values[suite][-2]:
                 edges[ace_suite].append(suite)
     for source in sources:  # total - Time: O(N), Space: O(N)
         if dfs(edges, source, targets):
