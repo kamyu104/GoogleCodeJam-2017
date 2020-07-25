@@ -68,7 +68,7 @@ def stack_management():
     else:
         return "IMPOSSIBLE"  # no empty stack
 
-    sources, targets, edges = [], [], defaultdict(list)
+    sources, targets, edges = [], set(), defaultdict(list)
     for i, stk in enumerate(stks):  # Time: O(R * C)
         if not stk:
             continue
@@ -81,7 +81,7 @@ def stack_management():
             if suite == ace_suite:
                 continue
             if value == suite_to_values[suite][-1]:
-                targets.append(ace_suite)
+                targets.add(ace_suite)
             if len(suite_to_values[suite]) >= 2 and value == suite_to_values[suite][-2]:
                 edges[ace_suite].append(suite)
     for source in sources:  # total - Time: O(N), Space: O(N)
