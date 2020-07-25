@@ -4,7 +4,7 @@
 # https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/00000000002017fd
 #
 # Time:  O((N * C) * logN)
-# Space: O(N)
+# Space: O(N * C)
 #
 
 from collections import defaultdict
@@ -84,7 +84,7 @@ def stack_management():
                 targets.append(ace_suite)
             if len(suite_to_values[suite]) >= 2 and value == suite_to_values[suite][-2]:
                 edges[ace_suite].append(suite)
-    for source in sources:
+    for source in sources:  # total - Time: O(N), Space: O(N)
         if dfs(edges, source, targets):
             break
     else:
