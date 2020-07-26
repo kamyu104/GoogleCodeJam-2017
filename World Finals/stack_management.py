@@ -83,7 +83,7 @@ def stack_management():
                 continue
             if value == suite_to_max_two_values[suite][-1]:
                 targets.add(ace_suite)
-            if suite in vertices and len(suite_to_max_two_values[suite]) == 2 and value == suite_to_max_two_values[suite][-2]:
+            elif suite in vertices and len(suite_to_max_two_values[suite]) == 2 and value == suite_to_max_two_values[suite][-2]:
                 adj[ace_suite].append(suite)
     for source in sources:  # total - Time: O(N), Space: O(N)
         if dfs(adj, source, targets):
