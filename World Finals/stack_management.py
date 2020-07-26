@@ -52,15 +52,15 @@ def stack_management():
             break
     else:
         return "POSSIBLE"
-    suite_to_values = defaultdict(list)
+    suite_to_max_two_values = defaultdict(list)
     for i, pile in enumerate(piles):  # Time: O((N * C) * log2), Space: O(N)
         for idx, (value, suite) in enumerate(pile):
-            heappush(suite_to_values[suite], value)
-            if len(suite_to_values[suite]) == 3:
-                heappop(suite_to_values[suite])
-            elif len(suite_to_values) > len(piles):
+            heappush(suite_to_max_two_values[suite], value)
+            if len(suite_to_max_two_values[suite]) == 3:
+                heappop(suite_to_max_two_values[suite])
+            elif len(suite_to_max_two_values) > len(piles):
                 return "IMPOSSIBLE"  # early return
-    if len(suite_to_values) < len(piles):
+    if len(suite_to_max_two_values) < len(piles):
         return "POSSIBLE"
     for pile in piles:
         if not pile:
@@ -68,22 +68,22 @@ def stack_management():
     else:
         return "IMPOSSIBLE"  # no empty stack
 
-    vertices = {pile[0][1] for pile in piles if pile and pile[0][0] == suite_to_values[pile[0][1]][-1]}  # Time: O(N)
+    vertices = {pile[0][1] for pile in piles if pile and pile[0][0] == suite_to_max_two_values[pile[0][1]][-1]}  # Time: O(N)
     sources, targets, edges = [], set(), defaultdict(list)
     for i, pile in enumerate(piles):  # Time: O(N * C)
         if not pile:
             continue
         ace_value, ace_suite = pile[0]
-        if ace_value != suite_to_values[ace_suite][-1]:
+        if ace_value != suite_to_max_two_values[ace_suite][-1]:
             continue
-        if len(suite_to_values[ace_suite]) == 1:
+        if len(suite_to_max_two_values[ace_suite]) == 1:
             sources.append(ace_suite)
         for value, suite in pile:
             if suite == ace_suite:
                 continue
-            if value == suite_to_values[suite][-1]:
+            if value == suite_to_max_two_values[suite][-1]:
                 targets.add(ace_suite)
-            if suite in vertices and len(suite_to_values[suite]) >= 2 and value == suite_to_values[suite][-2]:
+            if suite in vertices and len(suite_to_max_two_values[suite]) == 2 and value == suite_to_max_two_values[suite][-2]:
                 edges[ace_suite].append(suite)
     for source in sources:  # total - Time: O(N), Space: O(N)
         if dfs(edges, source, targets):
