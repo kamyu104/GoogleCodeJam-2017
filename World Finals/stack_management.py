@@ -28,15 +28,15 @@ def preprocess(piles):  # Time: O((N * C) * logN), Space: O(N)
         if len(min_heaps[suite]) > 1:
             stk.append(suite)
 
-def dfs(edges, source, targets):  # Time: O(N), Space: O(N)
+def dfs(adj, source, targets):  # Time: O(N), Space: O(N)
     stk, lookup = [source], set([source])
     while stk:
         u = stk.pop()
         if u in targets:
             return True
-        if u not in edges:
+        if u not in adj:
             continue
-        for v in edges[u]:
+        for v in adj[u]:
             if v in lookup:
                 continue
             lookup.add(v)
@@ -69,7 +69,7 @@ def stack_management():
         return "IMPOSSIBLE"  # no empty stack
 
     vertices = {pile[0][1] for pile in piles if pile and pile[0][0] == suite_to_max_two_values[pile[0][1]][-1]}  # Time: O(N)
-    sources, targets, edges = [], set(), defaultdict(list)
+    sources, targets, adj = [], set(), defaultdict(list)
     for i, pile in enumerate(piles):  # Time: O(N * C)
         if not pile:
             continue
@@ -84,9 +84,9 @@ def stack_management():
             if value == suite_to_max_two_values[suite][-1]:
                 targets.add(ace_suite)
             if suite in vertices and len(suite_to_max_two_values[suite]) == 2 and value == suite_to_max_two_values[suite][-2]:
-                edges[ace_suite].append(suite)
+                adj[ace_suite].append(suite)
     for source in sources:  # total - Time: O(N), Space: O(N)
-        if dfs(edges, source, targets):
+        if dfs(adj, source, targets):
             break
     else:
         return "IMPOSSIBLE"
