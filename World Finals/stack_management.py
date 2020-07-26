@@ -10,28 +10,28 @@
 from collections import defaultdict
 from heapq import heappush, heappop
 
-def preprocess(stks):  # Time: O((N * C) * logN), Space: O(N)
-    min_heaps, s = defaultdict(list), []
-    for i, stk in enumerate(stks):
-        value, suite = stk[-1]
+def preprocess(piles):  # Time: O((N * C) * logN), Space: O(N)
+    min_heaps, stk = defaultdict(list), []
+    for i, pile in enumerate(piles):
+        value, suite = pile[-1]
         heappush(min_heaps[suite], (value, i))
         if len(min_heaps[suite]) > 1:
-            s.append(suite)
-    while s:
-        suite = s.pop()
+            stk.append(suite)
+    while stk:
+        suite = stk.pop()
         _, i = heappop(min_heaps[suite])
-        stks[i].pop()
-        if not stks[i]:
+        piles[i].pop()
+        if not piles[i]:
             continue
-        value, suite = stks[i][-1]
+        value, suite = piles[i][-1]
         heappush(min_heaps[suite], (value, i))
         if len(min_heaps[suite]) > 1:
-            s.append(suite)
+            stk.append(suite)
 
 def dfs(edges, source, targets):  # Time: O(N), Space: O(N)
-    s, lookup = [source], set([source])
-    while s:
-        u = s.pop()
+    stk, lookup = [source], set([source])
+    while stk:
+        u = stk.pop()
         if u in targets:
             return True
         if u not in edges:
@@ -40,45 +40,45 @@ def dfs(edges, source, targets):  # Time: O(N), Space: O(N)
             if v in lookup:
                 continue
             lookup.add(v)
-            s.append(v)
+            stk.append(v)
     return False
 
 def stack_management():
     N, C = map(int, raw_input().strip().split())
-    stks = map(lambda x: STKS[x][:], map(int, raw_input().strip().split()))
-    preprocess(stks)  # remove all cards if possible 
-    for stk in stks:
-        if len(stk) > 1:
+    piles = map(lambda x: PILES[x][:], map(int, raw_input().strip().split()))
+    preprocess(piles)  # remove all cards if possible 
+    for pile in piles:
+        if len(pile) > 1:
             break
     else:
         return "POSSIBLE"
     suite_to_values = defaultdict(list)
-    for i, stk in enumerate(stks):  # Time: O((N * C) * log2), Space: O(N)
-        for idx, (value, suite) in enumerate(stk):
+    for i, pile in enumerate(piles):  # Time: O((N * C) * log2), Space: O(N)
+        for idx, (value, suite) in enumerate(pile):
             heappush(suite_to_values[suite], value)
             if len(suite_to_values[suite]) == 3:
                 heappop(suite_to_values[suite])
-            elif len(suite_to_values) > len(stks):
+            elif len(suite_to_values) > len(piles):
                 return "IMPOSSIBLE"  # early return
-    if len(suite_to_values) < len(stks):
+    if len(suite_to_values) < len(piles):
         return "POSSIBLE"
-    for stk in stks:
-        if not stk:
+    for pile in piles:
+        if not pile:
             break
     else:
         return "IMPOSSIBLE"  # no empty stack
 
-    vertices = {stk[0][1] for stk in stks if stk and stk[0][0] == suite_to_values[stk[0][1]][-1]}  # Time: O(N)
+    vertices = {pile[0][1] for pile in piles if pile and pile[0][0] == suite_to_values[pile[0][1]][-1]}  # Time: O(N)
     sources, targets, edges = [], set(), defaultdict(list)
-    for i, stk in enumerate(stks):  # Time: O(N * C)
-        if not stk:
+    for i, pile in enumerate(piles):  # Time: O(N * C)
+        if not pile:
             continue
-        ace_value, ace_suite = stk[0]
+        ace_value, ace_suite = pile[0]
         if ace_value != suite_to_values[ace_suite][-1]:
             continue
         if len(suite_to_values[ace_suite]) == 1:
             sources.append(ace_suite)
-        for value, suite in stk:
+        for value, suite in pile:
             if suite == ace_suite:
                 continue
             if value == suite_to_values[suite][-1]:
@@ -93,9 +93,9 @@ def stack_management():
     return "POSSIBLE"
 
 P = input()
-STKS = []
+PILES = []
 for _ in xrange(P):
     V_S = map(int, raw_input().strip().split())
-    STKS.append([(V_S[2*i+1], V_S[2*i+2]) for i in reversed(xrange((len(V_S)-1)//2))])
+    PILES.append([(V_S[2*i+1], V_S[2*i+2]) for i in reversed(xrange((len(V_S)-1)//2))])
 for case in xrange(input()):
     print 'Case #%d: %s' % (case+1, stack_management())
