@@ -51,13 +51,13 @@ def teleporters():
     else:
         return 2
 
-    MAX_RANGE = max(dist(Q, t) for t in teleporters)
+    MAX_STEP_NUM = max(dist(Q, t) for t in teleporters)  # each step strictly increase at least one distance
     left = 2-1  # extend binary search range from [2, MAX_RANGE] to (1, 1+2**(MAX_RANGE-1).bit_length())
-    right = left+2**(MAX_RANGE-1).bit_length()
+    right = left+2**(MAX_STEP_NUM-1).bit_length()
     U_matrix = [[dist(P, t) for t in teleporters]]  # 1 x N matrix
     matrix_pow = [[[dist(teleporters[i], teleporters[j]) for j in xrange(len(teleporters))] for i in xrange(len(teleporters))]]
     log2, base = {1:0}, 2
-    for i in xrange(1, (MAX_RANGE-1).bit_length()):  # Time: O(N^3 * logM)
+    for i in xrange(1, (MAX_STEP_NUM-1).bit_length()):  # Time: O(N^3 * logM)
         matrix_pow.append(matrix_mult(matrix_pow[-1], matrix_pow[-1]))
         log2[base] = i
         base <<= 1
