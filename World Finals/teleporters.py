@@ -16,7 +16,9 @@ def matrix_mult(A, B):  # Time: O(I * K * J)
     for i, A_i in enumerate(A):
         for j, B_t_j in enumerate(B_T):
             for k in xrange(len(B)):
-                result[i][j] = max(result[i][j], A_i[k]+B_t_j[k])
+                dist = A_i[k]+B_t_j[k]
+                if dist > result[i][j]:
+                    result[i][j] = dist
     return result
 
 def binary_search(left, right, check_fn, update_fn):  # find min x in (left, right) s.t. check(x) = true
