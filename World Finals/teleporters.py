@@ -23,15 +23,6 @@ def binarySearch(left, right, check_fn, update_fn):  # find min x in (left, righ
             update_fn(new_U_matrix)  # Time: O(N), Space: O(N)
     return right
 
-def matrix_expo(A, K):  # Time: O(N^3 * logK), iterated squaring
-    result = [[0]*(len(A)) for i in xrange(len(A))]
-    while K:
-        if K % 2:
-            result = matrix_mult(result, A)
-        A = matrix_mult(A, A)
-        K //= 2
-    return result
-
 def matrix_mult(A, B):  # Time: O(N^3)
     result = [[0]*len(B[0]) for _ in xrange(len(A))]
     for i in xrange(len(A)): 
@@ -69,7 +60,7 @@ def teleporters():
     right = left+2**(MAX_RANGE-1).bit_length()
     U_vector = [dist(P, t) for t in teleporters]
     matrix = [[dist(teleporters[i], teleporters[j]) for j in xrange(len(teleporters))] for i in xrange(len(teleporters))]
-    U_matrix = matrix_mult([U_vector], matrix_expo(matrix, left-1)) if left-1 else [U_vector]   # 1 x N matrix
+    U_matrix = [U_vector]   # 1 x N matrix
     matrix_pow = [matrix]
     log2, base = {1:0}, 2
     for i in xrange(1, (MAX_RANGE-1).bit_length()):  # Time: O(N^3 * logM)
