@@ -76,8 +76,7 @@ def teleporters():
         matrix_pow.append(matrix_mult(matrix_pow[-1], matrix_pow[-1]))
         log2[base] = i
         base <<= 1
-    step = binarySearch(left, right, check_fn, update_fn)
-    return step
+    return binarySearch(left, right, check_fn, update_fn)
 
 for case in xrange(input()):
     print 'Case #%d: %s' % (case+1, teleporters())
