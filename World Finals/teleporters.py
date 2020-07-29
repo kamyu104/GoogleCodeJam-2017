@@ -14,9 +14,9 @@ def matrix_mult(A, B):  # Time: O(I * K * J)
     result = [[0]*len(B[0]) for _ in xrange(len(A))]
     B_T = B  # B is a symmetric matrix in this problem
     for i, A_i in enumerate(A):
-        for j, B_t_j in enumerate(B_T):
+        for j, B_T_j in enumerate(B_T):
             for k in xrange(len(B)):
-                dist = A_i[k]+B_t_j[k]
+                dist = A_i[k]+B_T_j[k]
                 if dist > result[i][j]:
                     result[i][j] = dist
     return result
