@@ -3,7 +3,7 @@
 # Google Code Jam 2017 Word Finals - Problem F. Teleporters
 # https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/000000000020184b
 #
-# Time:  O(N^3 * logM), pass in PyPy2 but Python2
+# Time:  O(N^3 * logM), pass in PyPy2 (sometimes TLE) but Python2
 # Space: O(N^2 * logM)
 #
 
