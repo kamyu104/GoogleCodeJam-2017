@@ -58,10 +58,8 @@ def teleporters():
                     for i in xrange(3))
     left = 2-1  # extend binary search range from [2, MAX_RANGE] to (1, 1+2**(MAX_RANGE-1).bit_length())
     right = left+2**(MAX_RANGE-1).bit_length()
-    U_vector = [dist(P, t) for t in teleporters]
-    matrix = [[dist(teleporters[i], teleporters[j]) for j in xrange(len(teleporters))] for i in xrange(len(teleporters))]
-    U_matrix = [U_vector]   # 1 x N matrix
-    matrix_pow = [matrix]
+    U_matrix = [[dist(P, t) for t in teleporters]]  # 1 x N matrix
+    matrix_pow = [[[dist(teleporters[i], teleporters[j]) for j in xrange(len(teleporters))] for i in xrange(len(teleporters))]]
     log2, base = {1:0}, 2
     for i in xrange(1, (MAX_RANGE-1).bit_length()):  # Time: O(N^3 * logM)
         matrix_pow.append(matrix_mult(matrix_pow[-1], matrix_pow[-1]))
