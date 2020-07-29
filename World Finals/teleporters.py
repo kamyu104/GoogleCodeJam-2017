@@ -12,6 +12,14 @@ from itertools import chain
 def dist(a, b):
     return abs(a[0]-b[0])+abs(a[1]-b[1])+abs(a[2]-b[2])
 
+def matrix_mult(A, B):  # Time: O(N^3)
+    result = [[0]*len(B[0]) for _ in xrange(len(A))]
+    for i in xrange(len(A)): 
+        for j in xrange(len(B[0])): 
+            for k in xrange(len(B)): 
+                result[i][j] = max(result[i][j], A[i][k]+B[k][j]) 
+    return result
+
 def binary_search(left, right, check_fn, update_fn):  # find min x in (left, right) s.t. check(x) = true
     while right-left >= 2:
         mid = left + (right-left)//2
@@ -22,14 +30,6 @@ def binary_search(left, right, check_fn, update_fn):  # find min x in (left, rig
             left = mid
             update_fn(new_U_matrix)  # Time: O(N), Space: O(N)
     return right
-
-def matrix_mult(A, B):  # Time: O(N^3)
-    result = [[0]*len(B[0]) for _ in xrange(len(A))]
-    for i in xrange(len(A)): 
-        for j in xrange(len(B[0])): 
-            for k in xrange(len(B)): 
-                result[i][j] = max(result[i][j], A[i][k]+B[k][j]) 
-    return result
 
 def teleporters():
     def check_fn(x):
