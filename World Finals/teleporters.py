@@ -32,7 +32,7 @@ def binary_search(left, right, check_fn, update_fn):  # find min x in (left, rig
 def teleporters():
     def check_fn(x):
         new_U_matrix = matrix_mult(U_matrix, matrix_pow[log2[x]])  # Time: O(N^2), Space: O(N)
-        return any(dist(Q, teleporters[t]) <= U for t, U in enumerate(new_U_matrix[0])), new_U_matrix
+        return any(dist(Q, teleporters[i]) <= U for i, U in enumerate(new_U_matrix[0])), new_U_matrix
     
     def update_fn(new_U_matrix):
         U_matrix[:] = new_U_matrix
@@ -51,7 +51,7 @@ def teleporters():
     else:
         return 2
 
-    MAX_RANGE = dist(P, Q)
+    MAX_RANGE = max(dist(Q, t) for t in teleporters)
     left = 2-1  # extend binary search range from [2, MAX_RANGE] to (1, 1+2**(MAX_RANGE-1).bit_length())
     right = left+2**(MAX_RANGE-1).bit_length()
     U_matrix = [[dist(P, t) for t in teleporters]]  # 1 x N matrix
