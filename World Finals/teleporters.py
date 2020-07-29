@@ -3,7 +3,7 @@
 # Google Code Jam 2017 Word Finals - Problem F. Teleporters
 # https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/000000000020184b
 #
-# Time:  O(N^3 * logM), pass in PyPy2 (sometimes TLE) but Python2
+# Time:  O(N^3 * logM), pass in PyPy2 but Python2
 # Space: O(N^2 * logM)
 #
 
@@ -12,10 +12,11 @@ def dist(a, b):
 
 def matrix_mult(A, B):  # Time: O(I * K * J)
     result = [[0]*len(B[0]) for _ in xrange(len(A))]
-    for i in xrange(len(A)): 
-        for j in xrange(len(B[0])): 
-            for k in xrange(len(B)): 
-                result[i][j] = max(result[i][j], A[i][k]+B[k][j]) 
+    B_T = B  # B is a symmetric matrix in this problem
+    for i, A_i in enumerate(A):
+        for j, B_t_j in enumerate(B_T):
+            for k in xrange(len(B)):
+                result[i][j] = max(result[i][j], A_i[k]+B_t_j[k])
     return result
 
 def binary_search(left, right, check_fn, update_fn):  # find min x in (left, right) s.t. check(x) = true
@@ -33,7 +34,7 @@ def teleporters():
     def check_fn(x):
         new_U_matrix = matrix_mult(U_matrix, matrix_pow[log2[x]])  # Time: O(N^2), Space: O(N)
         return any(dist(Q, teleporters[i]) <= U for i, U in enumerate(new_U_matrix[0])), new_U_matrix
-    
+
     def update_fn(new_U_matrix):
         U_matrix[:] = new_U_matrix
 
