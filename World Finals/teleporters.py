@@ -53,9 +53,7 @@ def teleporters():
     else:
         return 2
 
-    MAX_RANGE = sum(max(chain([P, Q], teleporters), key=lambda x: x[i])[i]-
-                    min(chain([P, Q], teleporters), key=lambda x: x[i])[i]
-                    for i in xrange(3))
+    MAX_RANGE = dist(P, Q)
     left = 2-1  # extend binary search range from [2, MAX_RANGE] to (1, 1+2**(MAX_RANGE-1).bit_length())
     right = left+2**(MAX_RANGE-1).bit_length()
     U_matrix = [[dist(P, t) for t in teleporters]]  # 1 x N matrix
