@@ -12,7 +12,7 @@ from itertools import chain
 def dist(a, b):
     return abs(a[0]-b[0])+abs(a[1]-b[1])+abs(a[2]-b[2])
 
-def matrix_mult(A, B):  # Time: O(N^3)
+def matrix_mult(A, B):  # Time: O(I * K * J)
     result = [[0]*len(B[0]) for _ in xrange(len(A))]
     for i in xrange(len(A)): 
         for j in xrange(len(B[0])): 
