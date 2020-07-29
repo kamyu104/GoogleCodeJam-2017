@@ -12,7 +12,7 @@ from itertools import chain
 def dist(a, b):
     return abs(a[0]-b[0])+abs(a[1]-b[1])+abs(a[2]-b[2])
 
-def binarySearch(left, right, check_fn, update_fn):  # find min x in (left, right) s.t. check(x) = true
+def binary_search(left, right, check_fn, update_fn):  # find min x in (left, right) s.t. check(x) = true
     while right-left >= 2:
         mid = left + (right-left)//2
         found, new_U_matrix = check_fn(mid-left)  # Time: O(N^2), Space: O(N)
@@ -65,7 +65,7 @@ def teleporters():
         matrix_pow.append(matrix_mult(matrix_pow[-1], matrix_pow[-1]))
         log2[base] = i
         base <<= 1
-    return binarySearch(left, right, check_fn, update_fn)
+    return binary_search(left, right, check_fn, update_fn)
 
 for case in xrange(input()):
     print 'Case #%d: %s' % (case+1, teleporters())
