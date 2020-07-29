@@ -7,18 +7,20 @@
 # Space: O(N^2 * logM)
 #
 
+from itertools import izip
+
 def dist(a, b):
     return abs(a[0]-b[0])+abs(a[1]-b[1])+abs(a[2]-b[2])
 
 def matrix_mult(A, B):  # Time: O(I * K * J)
     result = [[0]*len(B[0]) for _ in xrange(len(A))]
     B_T = B  # B is a symmetric matrix in this problem
-    for i, A_i in enumerate(A):
+    for i, (result_i, A_i) in enumerate(izip(result, A)):
         for j, B_T_j in enumerate(B_T):
-            for k in xrange(len(B)):
-                dist = A_i[k]+B_T_j[k]
-                if dist > result[i][j]:
-                    result[i][j] = dist
+            for A_i_k,  B_T_j_k in izip(A_i, B_T_j):
+                dist = A_i_k + B_T_j_k
+                if dist > result_i[j]:
+                    result_i[j] = dist
     return result
 
 def binary_search(left, right, check_fn, update_fn):  # find min x in (left, right) s.t. check(x) = true
