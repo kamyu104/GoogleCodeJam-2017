@@ -41,12 +41,9 @@ def matrix_mult(A, B):  # Time: O(N^3)
     return result
 
 def teleporters():
-    def is_found(U_matrix):
-        return any(dist(Q, teleporters[t]) <= U for t, U in enumerate(U_matrix[0]))
-
     def check_fn(x):
         new_U_matrix = matrix_mult(U_matrix, matrix_pow[log2[x]])  # Time: O(N^2), Space: O(N)
-        return is_found(new_U_matrix), new_U_matrix
+        return any(dist(Q, teleporters[t]) <= U for t, U in enumerate(new_U_matrix[0])), new_U_matrix
     
     def update_fn(new_U_matrix):
         U_matrix[:] = new_U_matrix
