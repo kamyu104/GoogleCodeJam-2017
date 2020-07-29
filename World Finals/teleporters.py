@@ -51,9 +51,6 @@ def teleporters():
     N = input()
     P, Q = [map(int, raw_input().strip().split()) for _ in xrange(2)]
     teleporters = [map(int, raw_input().strip().split()) for _ in xrange(N)]
-    MAX_RANGE = sum(max(chain([P, Q], teleporters), key=lambda x: x[i])[i]-
-                    min(chain([P, Q], teleporters), key=lambda x: x[i])[i]
-                    for i in xrange(3))
     if any(dist(P, t) == dist(Q, t) for t in teleporters):
         return 1
     if N == 1:
@@ -65,6 +62,9 @@ def teleporters():
     else:
         return 2
 
+    MAX_RANGE = sum(max(chain([P, Q], teleporters), key=lambda x: x[i])[i]-
+                    min(chain([P, Q], teleporters), key=lambda x: x[i])[i]
+                    for i in xrange(3))
     left = 2-1  # extend binary search range from [2, MAX_RANGE] to (1, 1+2**(MAX_RANGE-1).bit_length())
     right = left+2**(MAX_RANGE-1).bit_length()
     U_vector = [dist(P, t) for t in teleporters]
