@@ -25,7 +25,7 @@ Python solutions of Google Code Jam 2017. Solution begins with `*` means it will
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
 |A| [Alphabet Cake](https://code.google.com/codejam/contest/5304486/dashboard#s=p0)| [Python](./Round%201A/alphabet-cake.py)| _O(R * C)_ | _O(1)_ | Easy | | Greedy |
 |B| [Ratatouille](https://code.google.com/codejam/contest/5304486/dashboard#s=p1)| [Python](./Round%201A/ratatouille.py)| _O(N^2 * P^2)_ | _O(N * P)_ | Medium | | Greedy |
-|C| [Play The Dragon](https://code.google.com/codejam/contest/5304486/dashboard#s=p2)| [Python](./Round%201A/play-the-dragon.py)| _O(sqrt(N))_ | _O(1)_ | Hard | | Math Analysis |
+|C| [Play The Dragon](https://code.google.com/codejam/contest/5304486/dashboard#s=p2)| [Python](./Round%201A/play-the-dragon.py)| _O(sqrt(N))_ | _O(1)_ | Hard | ❤️ | Math Analysis |
 
 ## Round 1B
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
@@ -55,7 +55,7 @@ Python solutions of Google Code Jam 2017. Solution begins with `*` means it will
 |A| [Googlements](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201902/00000000002017f6)| [Python](./Round%203/googlements.py) | _O(L * (H(L + 1, L) - 1))_ | _O(L)_  | Easy | | Math, Backtracking, Pruning |
 |B| [Good News and Bad News](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201902/0000000000201846)|[Python](./Round%203/good_news_and_bad_news.py) | _O(P^2)_ | _O(P)_ | Medium | | Graph, DFS, Spanning Tree |
 |C| [Mountain Tour](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201902/0000000000201877)| [Python](./Round%203/mountain_tour.py) | _O(C * log*(C))_ | _O(C)_ | Medium | | Union Find, Greedy |
-|D| [Slate Modern](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201902/0000000000201903)| [Python](./Round%203/slate_modern.py) | _O(N^2)_ | _O(N^2)_ | Hard | | Manhattan Distance, Coordinate Compression, DP, Arithmetic Progression |
+|D| [Slate Modern](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201902/0000000000201903)| [Python](./Round%203/slate_modern.py) | _O(N^2)_ | _O(N^2)_ | Hard | ❤️ | Manhattan Distance, Coordinate Compression, DP, Arithmetic Progression |
 
 ## World Finals
 You can relive the magic of the 2017 Code Jam World Finals by watching the [Live Stream Recording](https://www.youtube.com/watch?v=Pq-wdw9TRoI) of the competition, problem explanations, interviews with Google and Code Jam engineers, and announcement of winners.
@@ -65,6 +65,6 @@ You can relive the magic of the 2017 Code Jam World Finals by watching the [Live
 |A| [Dice Straight](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/00000000002017fc)| [PyPy](./World%20Finals/dice_straight.py) [PyPy](./World%20Finals/dice_straight2.py) | _O(N^2)_ | _O(N)_ | Medium | | Sliding Window, Bipartite Matching, Ford-Fulkerson Algorithm |
 |B| [Operation](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/000000000020184a)| [Python](./World%20Finals/operation.py) | _O(11*2^11 * (N * D^2))_ | _O(2^11 * (N * D))_ | Medium | | Grouping, Greedy, DP |
 |C| [Spanning Planning](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/000000000020187a)| [PyPy](./World%20Finals/spanning_planning.py) | _O(R * N^3)_ | _O(N^2)_ | Hard | | Cycle, Spanning Tree, Kirchhoff Matrix Tree Theorem, Determinant, Gaussian Elimination |
-|D| [Omnicircumnavigation](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/000000000020190a)| [PyPy](./World%20Finals/omnicircumnavigation.py) | _O(N^2)_ | _O(N)_ | Easy | | Geometry, Plane, Vector, Inner Product, Outer Product |
-|E| [Stack Management](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/00000000002017fd)| [Python](./World%20Finals/stack_management.py) | _O((N * C) * logN)_ | _O(N * C)_ | Very Hard | | Preprocess, Stack, DFS |
-|F| [Teleporters](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/000000000020184b)| [PyPy](./World%20Finals/teleporters.py) | _O(N^3 * logM)_  | _O(N^2 * logM)_ | Very Hard | | Geometry, Binary Search, Distance Matrix, Power of 2, Precompute |
+|D| [Omnicircumnavigation](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/000000000020190a)| [PyPy](./World%20Finals/omnicircumnavigation.py) | _O(N^2)_ | _O(N)_ | Easy | 	❤️ | Geometry, Plane, Vector, Inner Product, Outer Product |
+|E| [Stack Management](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/00000000002017fd)| [Python](./World%20Finals/stack_management.py) | _O((N * C) * logN)_ | _O(N * C)_ | Very Hard | 	❤️ | Preprocess, Stack, DFS |
+|F| [Teleporters](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/000000000020184b)| [PyPy](./World%20Finals/teleporters.py) | _O(N^3 * logM)_  | _O(N^2 * logM)_ | Very Hard | 	❤️ | Geometry, Binary Search, Distance Matrix, Power of 2, Precompute |
