@@ -1,4 +1,4 @@
-# [GoogleCodeJam 2017](https://codingcompetitions.withgoogle.com/codejam/archive/2017) ![Language](https://img.shields.io/badge/language-Python-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.md) ![Progress](https://img.shields.io/badge/progress-26%20%2F%2027-ff69b4.svg)
+# [GoogleCodeJam 2017](https://codingcompetitions.withgoogle.com/codejam/archive/2017) ![Language](https://img.shields.io/badge/language-Python-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.md) ![Progress](https://img.shields.io/badge/progress-27%20%2F%2027-ff69b4.svg)
 
 Python solutions of Google Code Jam 2017. Solution begins with `*` means it will get TLE in the largest data set (total computation amount > `10^8`, which is not friendly for Python to solve in 5 ~ 15 seconds). A `4-minute` timer is set for the small dataset and a `8-minute` timer is set for the large dataset this year.
 
@@ -67,4 +67,4 @@ You can relive the magic of the 2017 Code Jam World Finals by watching the [Live
 |C| [Spanning Planning](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/000000000020187a)| [PyPy](./World%20Finals/spanning_planning.py) | _O(R * N^3)_ | _O(N^2)_ | Hard | | Cycle, Spanning Tree, Kirchhoff Matrix Tree Theorem, Determinant, Gaussian Elimination |
 |D| [Omnicircumnavigation](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/000000000020190a)| [PyPy](./World%20Finals/omnicircumnavigation.py) | _O(N^2)_ | _O(N)_ | Easy | | Geometry, Plane, Vector, Inner Product, Outer Product |
 |E| [Stack Management](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/00000000002017fd)| [Python](./World%20Finals/stack_management.py) | _O((N * C) * logN)_ | _O(N * C)_ | Very Hard | | Preprocess, Stack, DFS |
-|F| [Teleporters](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/000000000020184b)| | _O(N^3 * logM)_  | _O(N^2 * logM)_ | Very Hard | | Geometry, Binary Search, Distance Matrix, Power of 2, Precompute |
+|F| [Teleporters](https://codingcompetitions.withgoogle.com/codejam/round/0000000000201909/000000000020184b)| [PyPy](./World%20Finals/teleporters.py) | _O(N^3 * logM)_  | _O(N^2 * logM)_ | Very Hard | | Geometry, Binary Search, Distance Matrix, Power of 2, Precompute |
