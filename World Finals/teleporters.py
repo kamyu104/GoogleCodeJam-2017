@@ -52,7 +52,7 @@ def teleporters():
         return 2
 
     MAX_STEP_NUM = max(dist(Q, t) for t in teleporters)  # the farest reachable distance strictly increase at least 1 per step
-    left = 2-1  # extend binary search range from [2, MAX_RANGE] to (1, 1+2**(MAX_RANGE-1).bit_length())
+    left = 2-1  # extend binary search range from [2, MAX_STEP_NUM] to (1, 1+2**(MAX_STEP_NUM-1).bit_length())
     right = left+2**(MAX_STEP_NUM-1).bit_length()
     U_matrix = [[dist(P, t) for t in teleporters]]  # 1 x N matrix
     matrix_pow = [[[dist(teleporters[i], teleporters[j]) for j in xrange(len(teleporters))] for i in xrange(len(teleporters))]]
