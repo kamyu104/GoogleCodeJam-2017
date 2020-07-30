@@ -17,7 +17,7 @@ def vector_mult(A, B):  # Time: O(N^2), A is a N-d vector, B is a N x N symmetri
     B_T = B
     for i, B_T_i in enumerate(B_T):
         for j, (A_j, B_T_i_j) in enumerate(izip(A, B_T_i)):
-            dist = A[j] + B_T_i[j]
+            dist = A_j + B_T_i_j
             if dist > result[i]:
                 result[i] = dist
     return result
