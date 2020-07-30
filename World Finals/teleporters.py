@@ -7,40 +7,50 @@
 # Space: O(N^2 * logM)
 #
 
-from itertools import izip
+from itertools import izip, islice
 
 def dist(a, b):
     return abs(a[0]-b[0])+abs(a[1]-b[1])+abs(a[2]-b[2])
 
-def matrix_mult(A, B):  # Time: O(I * K * J)
+def vec_mult(A, B):  # Time: O(N^2), A is a N-d vector, B is a N x N matrix
+    result = [0]*len(B[0])
+    B_T = B  # B is a symmetric matrix in this problem
+    for i, B_T_i in enumerate(B_T):
+        for j, (A_j, B_T_i_j) in enumerate(izip(A, B_T_i)):
+            dist = A[j] + B_T_i[j]
+            if dist > result[i]:
+                result[i] = dist
+    return result
+
+def matrix_mult(A, B):  # Time: O(N^3), A, B are both N x N matrixs
     result = [[0]*len(B[0]) for _ in xrange(len(A))]
     B_T = B  # B is a symmetric matrix in this problem
     for i, (result_i, A_i) in enumerate(izip(result, A)):
-        for j, B_T_j in enumerate(B_T):
-            for A_i_k,  B_T_j_k in izip(A_i, B_T_j):
+        for j, (result_j, B_T_j) in enumerate(islice(izip(result, B_T), i, len(result)), i):
+            for A_i_k, B_T_j_k in izip(A_i, B_T_j):
                 dist = A_i_k + B_T_j_k
                 if dist > result_i[j]:
-                    result_i[j] = dist
+                    result_i[j] = result_j[i] = dist  # result is a symmetric matrix in this problem
     return result
 
 def binary_search(left, right, check_fn, update_fn):  # find min x in (left, right) s.t. check(x) = true
     while right-left >= 2:
         mid = left + (right-left)//2
-        found, new_U_matrix = check_fn(mid-left)  # Time: O(N^2), Space: O(N)
+        found, new_U_vector = check_fn(mid-left)  # Time: O(N^2), Space: O(N)
         if found:
             right = mid
         else:
             left = mid
-            update_fn(new_U_matrix)  # Time: O(N), Space: O(N)
+            update_fn(new_U_vector)  # Time: O(N), Space: O(N)
     return right
 
 def teleporters():
     def check_fn(x):
-        new_U_matrix = matrix_mult(U_matrix, matrix_pow[log2[x]])  # Time: O(N^2), Space: O(N)
-        return any(dist(Q, teleporters[i]) <= U for i, U in enumerate(new_U_matrix[0])), new_U_matrix
+        new_U_vector = vec_mult(U_vector, matrix_pow[log2[x]])  # Time: O(N^2), Space: O(N)
+        return any(dist(Q, teleporters[i]) <= U for i, U in enumerate(new_U_vector)), new_U_vector
 
-    def update_fn(new_U_matrix):
-        U_matrix[:] = new_U_matrix
+    def update_fn(new_U_vector):
+        U_vector[:] = new_U_vector
 
     N = input()
     P, Q = [map(int, raw_input().strip().split()) for _ in xrange(2)]
@@ -60,7 +70,7 @@ def teleporters():
     ceil_log2_MAX_STEP_NUM = (MAX_STEP_NUM-1).bit_length()
     left = 2-1  # extend binary search range from [2, MAX_STEP_NUM] to (1, 1+2**ceil_log2_MAX_STEP_NUM)
     right = left+2**ceil_log2_MAX_STEP_NUM
-    U_matrix = [[dist(P, t) for t in teleporters]]  # 1 x N matrix
+    U_vector = [dist(P, t) for t in teleporters]  # N-d vector
     matrix_pow = [[[dist(teleporters[i], teleporters[j]) for j in xrange(len(teleporters))] for i in xrange(len(teleporters))]]
     log2, base = {1:0}, 2
     for i in xrange(1, ceil_log2_MAX_STEP_NUM):  # Time: O(N^3 * logM)
