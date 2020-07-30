@@ -72,7 +72,7 @@ def teleporters():
     ceil_log2_MAX_STEP_NUM = (MAX_STEP_NUM-1).bit_length()
     left = 2-1  # extend binary search range from [2, MAX_STEP_NUM] to (1, 1+2**ceil_log2_MAX_STEP_NUM)
     right = left+2**ceil_log2_MAX_STEP_NUM
-    U_vector = dist_P[:] # N-d vector
+    U_vector = dist_P[:]  # N-d vector
     matrix_pow = [[[dist(t, u) for u in teleporters] for t in teleporters]]
     log2, base = {1:0}, 2
     for i in xrange(1, ceil_log2_MAX_STEP_NUM):  # Time: O(N^3 * logM)
