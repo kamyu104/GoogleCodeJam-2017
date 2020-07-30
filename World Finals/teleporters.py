@@ -47,7 +47,7 @@ def binary_search(left, right, check_fn, update_fn):  # find min x in (left, rig
 def teleporters():
     def check_fn(x):
         new_U_vector = vector_mult(U_vector, matrix_pow[log2[x]])  # Time: O(N^2), Space: O(N)
-        return any(dist(Q, teleporters[i]) <= U for i, U in enumerate(new_U_vector)), new_U_vector
+        return any(dist_Q[i] <= U for i, U in enumerate(new_U_vector)), new_U_vector
 
     def update_fn(new_U_vector):
         U_vector[:] = new_U_vector
@@ -55,23 +55,25 @@ def teleporters():
     N = input()
     P, Q = [map(int, raw_input().strip().split()) for _ in xrange(2)]
     teleporters = [map(int, raw_input().strip().split()) for _ in xrange(N)]
-    if any(dist(P, t) == dist(Q, t) for t in teleporters):
+    dist_P, dist_Q = [[dist(x, t) for t in teleporters] for x in (P, Q)]
+    if any(dist_P_t == dist_Q_t for dist_P_t, dist_Q_t in izip(dist_P, dist_Q)):
         return 1
     if N == 1:
         return "IMPOSSIBLE"
-    if all(dist(P, t) < dist(Q, t) for t in teleporters):
+    if all(dist_P_t < dist_Q_t for dist_P_t, dist_Q_t in izip(dist_P, dist_Q)):
         pass  # P is the closer point
-    elif all(dist(P, t) > dist(Q, t) for t in teleporters):
+    elif all(dist_P_t > dist_Q_t for dist_P_t, dist_Q_t in izip(dist_P, dist_Q)):
         P, Q = Q, P
+        dist_P, dist_Q = dist_Q, dist_P
     else:
         return 2
 
-    MAX_STEP_NUM = max(dist(Q, t) for t in teleporters)  # the farest reachable distance strictly increase at least 1 per step
+    MAX_STEP_NUM = max(dist_Q)  # the farest reachable distance strictly increase at least 1 per step
     ceil_log2_MAX_STEP_NUM = (MAX_STEP_NUM-1).bit_length()
     left = 2-1  # extend binary search range from [2, MAX_STEP_NUM] to (1, 1+2**ceil_log2_MAX_STEP_NUM)
     right = left+2**ceil_log2_MAX_STEP_NUM
-    U_vector = [dist(P, t) for t in teleporters]  # N-d vector
-    matrix_pow = [[[dist(teleporters[i], teleporters[j]) for j in xrange(len(teleporters))] for i in xrange(len(teleporters))]]
+    U_vector = dist_P[:] # N-d vector
+    matrix_pow = [[[dist(t, u) for u in teleporters] for t in teleporters]]
     log2, base = {1:0}, 2
     for i in xrange(1, ceil_log2_MAX_STEP_NUM):  # Time: O(N^3 * logM)
         matrix_pow.append(matrix_mult(matrix_pow[-1], matrix_pow[-1]))
