@@ -12,9 +12,9 @@ from itertools import izip, islice
 def dist(a, b):
     return abs(a[0]-b[0])+abs(a[1]-b[1])+abs(a[2]-b[2])
 
-def vec_mult(A, B):  # Time: O(N^2), A is a N-d vector, B is a N x N matrix
+def vec_mult(A, B):  # Time: O(N^2), A is a N-d vector, B is a N x N symmetric matrix
     result = [0]*len(B[0])
-    B_T = B  # B is a symmetric matrix in this problem
+    B_T = B
     for i, B_T_i in enumerate(B_T):
         for j, (A_j, B_T_i_j) in enumerate(izip(A, B_T_i)):
             dist = A[j] + B_T_i[j]
@@ -22,15 +22,15 @@ def vec_mult(A, B):  # Time: O(N^2), A is a N-d vector, B is a N x N matrix
                 result[i] = dist
     return result
 
-def matrix_mult(A, B):  # Time: O(N^3), A, B are both N x N matrixs
+def matrix_mult(A, B):  # Time: O(N^3), A, B are both N x N symmetric matrixs
     result = [[0]*len(B[0]) for _ in xrange(len(A))]
-    B_T = B  # B is a symmetric matrix in this problem
+    B_T = B
     for i, (result_i, A_i) in enumerate(izip(result, A)):
         for j, (result_j, B_T_j) in enumerate(islice(izip(result, B_T), i, len(result)), i):
             for A_i_k, B_T_j_k in izip(A_i, B_T_j):
                 dist = A_i_k + B_T_j_k
                 if dist > result_i[j]:
-                    result_i[j] = result_j[i] = dist  # result is a symmetric matrix in this problem
+                    result_i[j] = result_j[i] = dist  # result is also a symmetric matrix
     return result
 
 def binary_search(left, right, check_fn, update_fn):  # find min x in (left, right) s.t. check(x) = true
