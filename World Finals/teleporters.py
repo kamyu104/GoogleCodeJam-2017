@@ -12,7 +12,7 @@ from itertools import izip, islice
 def dist(a, b):
     return abs(a[0]-b[0])+abs(a[1]-b[1])+abs(a[2]-b[2])
 
-def vec_mult(A, B):  # Time: O(N^2), A is a N-d vector, B is a N x N symmetric matrix
+def vector_mult(A, B):  # Time: O(N^2), A is a N-d vector, B is a N x N symmetric matrix
     result = [0]*len(B[0])
     B_T = B
     for i, B_T_i in enumerate(B_T):
@@ -46,7 +46,7 @@ def binary_search(left, right, check_fn, update_fn):  # find min x in (left, rig
 
 def teleporters():
     def check_fn(x):
-        new_U_vector = vec_mult(U_vector, matrix_pow[log2[x]])  # Time: O(N^2), Space: O(N)
+        new_U_vector = vector_mult(U_vector, matrix_pow[log2[x]])  # Time: O(N^2), Space: O(N)
         return any(dist(Q, teleporters[i]) <= U for i, U in enumerate(new_U_vector)), new_U_vector
 
     def update_fn(new_U_vector):
